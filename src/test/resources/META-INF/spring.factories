@@ -1,0 +1,4 @@
+org.springframework.test.context.ContextCustomizerFactory = com.bulut.\
+    attendance.config.SqlTestContainersSpringContextCustomizerFactory,com.bulut.\
+    attendance.config.TestContainersSpringContextCustomizerFactory,com.bulut.\
+    attendance.config.RedisTestContainersSpringContextCustomizerFactory

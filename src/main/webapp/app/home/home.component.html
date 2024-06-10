@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-3">
+    <span class="hipster img-fluid rounded"></span>
+  </div>
+
+  <div class="col-md-9">
+    <h1 class="display-4"><span jhiTranslate="home.title">خوش آمدید, Java Hipster!</span> (Bulut Attendance)</h1>
+
+    <p class="lead" jhiTranslate="home.subtitle">این صفحه اصلی شماست</p>
+
+    <div>
+      @if (account() !== null) {
+        <div class="alert alert-success">
+          @if (account()) {
+            <span id="home-logged-message" jhiTranslate="home.logged.message" [translateValues]="{ username: account()!.login }"
+              >شما وارد شدید با کاربر &quot;{{ account()!.login }}&quot;.</span
+            >
+          }
+        </div>
+      } @else {
+        <div class="alert alert-warning">
+          <span jhiTranslate="global.messages.info.authenticated.prefix">اگر شما می‌خواهید</span>
+          <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">ورود</a
+          ><span jhiTranslate="global.messages.info.authenticated.suffix"
+            >, می‌توانید از حساب پایه:<br />- مدیریت برتر (login=&quot;admin&quot; and password=&quot;admin&quot;) <br />- کاربر
+            (login=&quot;user&quot; and password=&quot;user&quot;).</span
+          >
+        </div>
+      }
+    </div>
+
+    <p jhiTranslate="home.question">اگر سوالی دارید؟ در مورد JHipster:</p>
+
+    <ul>
+      <li>
+        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
+          >JHipster صفحه اصلی</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://stackoverflow.com/tags/jhipster/info"
+          target="_blank"
+          rel="noopener noreferrer"
+          jhiTranslate="home.link.stackoverflow"
+          >JHipster در Stack Overflow</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
+          target="_blank"
+          rel="noopener noreferrer"
+          jhiTranslate="home.link.bugtracker"
+          >JHipster bug tracker</a
+        >
+      </li>
+      <li>
+        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
+          >JHipster public chat room</a
+        >
+      </li>
+      <li>
+        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
+          >دنبال کنید &#64;jhipster در Twitter</a
+        >
+      </li>
+    </ul>
+
+    <p>
+      <span jhiTranslate="home.like">اگر JHipster را دوست دارید، فراموش نکنید بهش ستاره بدید در</span>
+      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
+        >GitHub</a
+      >!
+    </p>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: bulutattendance
+services:
+  mssql:
+    extends:
+      file: ./mssql.yml
+      service: mssql
+  elasticsearch:
+    extends:
+      file: ./elasticsearch.yml
+      service: elasticsearch
+  redis:
+    extends:
+      file: ./redis.yml
+      service: redis
