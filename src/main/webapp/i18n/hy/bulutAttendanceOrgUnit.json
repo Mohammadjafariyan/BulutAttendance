@@ -1,0 +1,29 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceOrgUnit": {
+      "home": {
+        "title": "Org Units",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Org Unit",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Org Unit",
+        "search": "Գտնել Org Unit",
+        "notFound": "No Org Units found"
+      },
+      "created": "Նոր Org Unit ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Org Unit թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Org Unit հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Org Unit {{ id }}?"
+      },
+      "detail": {
+        "title": "Org Unit"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "parent": "Parent"
+    }
+  }
+}

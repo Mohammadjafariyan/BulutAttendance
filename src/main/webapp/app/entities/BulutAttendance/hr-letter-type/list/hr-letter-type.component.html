@@ -1,0 +1,186 @@
+<div>
+  <h2 id="page-heading" data-cy="HrLetterTypeHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.home.title">Hr Letter Types</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-hr-letter-type"
+        [routerLink]="['/bulutattendance/hr-letter-type/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.home.createLabel"
+          >Create a new Hr Letter Type</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.home.search"
+          >Search for Hr Letter Type</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendanceHrLetterType.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (hrLetterTypes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.home.notFound">No Hr Letter Types found</span>
+    </div>
+  }
+
+  @if (hrLetterTypes && hrLetterTypes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.title">Title</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.id">Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.status">Status</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (hrLetterType of hrLetterTypes; track trackId) {
+            <tr data-cy="entityTable">
+              <td>{{ hrLetterType.title }}</td>
+              <td>
+                <a [routerLink]="['/bulutattendance/hr-letter-type', hrLetterType.id, 'view']">{{ hrLetterType.id }}</a>
+              </td>
+              <td>
+                @if (hrLetterType.status) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/record-status', hrLetterType.status.id, 'view']">{{ hrLetterType.status.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetterType.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', hrLetterType.internalUser.id, 'view']">{{
+                      hrLetterType.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetterType.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', hrLetterType.company.id, 'view']">{{ hrLetterType.company.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/hr-letter-type', hrLetterType.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/hr-letter-type', hrLetterType.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(hrLetterType)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (hrLetterTypes && hrLetterTypes.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

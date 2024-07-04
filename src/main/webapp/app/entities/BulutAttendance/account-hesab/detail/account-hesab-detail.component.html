@@ -1,0 +1,207 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (accountHesab()) {
+      <div>
+        <h2 data-cy="accountHesabDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.detail.title">Account Hesab</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.title' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.title"
+              >Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountHesab()!.title }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.code' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.code"
+              >Code</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountHesab()!.code }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.level' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.level"
+              >Level</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountHesab()!.level }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.levelTitle' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.levelTitle"
+              >Level Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountHesab()!.levelTitle }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.id">Id</span></dt>
+          <dd>
+            <span>{{ accountHesab()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.type' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.type"
+              >Type</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.AccountType.' + (accountHesab()!.type ?? 'null')">{{
+              { null: '', Credit: 'Credit', Debit: 'Debit' }[accountHesab()!.type ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.levelInTree' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.levelInTree"
+              >Level In Tree</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.AccountLevelInTree.' + (accountHesab()!.levelInTree ?? 'null')">{{
+              {
+                null: '',
+                GROUP: 'GROUP',
+                KOL: 'KOL',
+                MOAYAN: 'MOAYAN',
+                TAFZIL: 'TAFZIL',
+                TAFZIL_2: 'TAFZIL_2',
+                TAFZIL_3: 'TAFZIL_3',
+                TAFZIL_4: 'TAFZIL_4',
+                TAFZIL_5: 'TAFZIL_5',
+                TAFZIL_6: 'TAFZIL_6',
+                TAFZIL_7: 'TAFZIL_7',
+                TAFZIL_8: 'TAFZIL_8',
+                TAFZIL_9: 'TAFZIL_9',
+                TAFZIL_10: 'TAFZIL_10'
+              }[accountHesab()!.levelInTree ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.debitAmount' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.debitAmount"
+              >Debit Amount</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountHesab()!.debitAmount }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.creditAmount' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.creditAmount"
+              >Credit Amount</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountHesab()!.creditAmount }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountHesab.help.typeInFormula' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.typeInFormula"
+              >Type In Formula</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.AccountingFormulaType.' + (accountHesab()!.typeInFormula ?? 'null')">{{
+              {
+                null: '',
+                ASSETS: 'ASSETS',
+                EXPENSES: 'EXPENSES',
+                DIVIDENDS: 'DIVIDENDS',
+                LIABILITIES: 'LIABILITIES',
+                OWNERS_EQUITY: 'OWNERS_EQUITY',
+                REVENUE: 'REVENUE'
+              }[accountHesab()!.typeInFormula ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.status">Status</span></dt>
+          <dd>
+            @if (accountHesab()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', accountHesab()!.status?.id, 'view']">{{
+                  accountHesab()!.status?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.internalUser">Internal User</span></dt>
+          <dd>
+            @if (accountHesab()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', accountHesab()!.internalUser?.id, 'view']">{{
+                  accountHesab()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.company">Company</span></dt>
+          <dd>
+            @if (accountHesab()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', accountHesab()!.company?.id, 'view']">{{ accountHesab()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.parentAccountId">Parent Account Id</span></dt>
+          <dd>
+            @if (accountHesab()!.parentAccountId) {
+              <div>
+                <a [routerLink]="['/bulutattendance/account-hesab', accountHesab()!.parentAccountId?.id, 'view']">{{
+                  accountHesab()!.parentAccountId?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.personnelId">Personnel Id</span></dt>
+          <dd>
+            @if (accountHesab()!.personnelId) {
+              <div>
+                <a [routerLink]="['/bulutattendance/personnel', accountHesab()!.personnelId?.id, 'view']">{{
+                  accountHesab()!.personnelId?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountHesab.bank">Bank</span></dt>
+          <dd>
+            @if (accountHesab()!.bank) {
+              <div>
+                <a [routerLink]="['/bulutattendance/bank', accountHesab()!.bank?.id, 'view']">{{ accountHesab()!.bank?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/account-hesab', accountHesab()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,223 @@
+<div>
+  <h2 id="page-heading" data-cy="AccProcStepHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.home.title">Acc Proc Steps</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-acc-proc-step"
+        [routerLink]="['/bulutattendance/acc-proc-step/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.home.createLabel"
+          >Create a new Acc Proc Step</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.home.search"
+          >Search for Acc Proc Step</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendanceAccProcStep.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (accProcSteps?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.home.notFound">No Acc Proc Steps found</span>
+    </div>
+  }
+
+  @if (accProcSteps && accProcSteps.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">شناسه</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creditAccount.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.creditAccount">Credit Account</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="debitAccount.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.debitAccount">Debit Account</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="parameter.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.parameter">Parameter</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="procedure.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.procedure">Procedure</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (accProcStep of accProcSteps; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/bulutattendance/acc-proc-step', accProcStep.id, 'view']">{{ accProcStep.id }}</a>
+              </td>
+              <td>
+                @if (accProcStep.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', accProcStep.internalUser.id, 'view']">{{
+                      accProcStep.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accProcStep.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', accProcStep.company.id, 'view']">{{ accProcStep.company.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accProcStep.creditAccount) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/account-hesab', accProcStep.creditAccount.id, 'view']">{{
+                      accProcStep.creditAccount.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accProcStep.debitAccount) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/account-hesab', accProcStep.debitAccount.id, 'view']">{{
+                      accProcStep.debitAccount.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accProcStep.parameter) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/acc-procc-parameter', accProcStep.parameter.id, 'view']">{{
+                      accProcStep.parameter.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accProcStep.procedure) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/accounting-procedure', accProcStep.procedure.id, 'view']">{{
+                      accProcStep.procedure.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/acc-proc-step', accProcStep.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/acc-proc-step', accProcStep.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(accProcStep)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (accProcSteps && accProcSteps.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

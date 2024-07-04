@@ -1,0 +1,181 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (accountTemplate()) {
+      <div>
+        <h2 data-cy="accountTemplateDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.detail.title">Account Template</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.title' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.title"
+              >Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountTemplate()!.title }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.code' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.code"
+              >Code</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountTemplate()!.code }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.level' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.level"
+              >Level</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountTemplate()!.level }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.levelTitle' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.levelTitle"
+              >Level Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountTemplate()!.levelTitle }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.id">Id</span></dt>
+          <dd>
+            <span>{{ accountTemplate()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.type' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.type"
+              >Type</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.AccountType.' + (accountTemplate()!.type ?? 'null')">{{
+              { null: '', Credit: 'Credit', Debit: 'Debit' }[accountTemplate()!.type ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.levelInTree' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.levelInTree"
+              >Level In Tree</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.AccountLevelInTree.' + (accountTemplate()!.levelInTree ?? 'null')">{{
+              {
+                null: '',
+                GROUP: 'GROUP',
+                KOL: 'KOL',
+                MOAYAN: 'MOAYAN',
+                TAFZIL: 'TAFZIL',
+                TAFZIL_2: 'TAFZIL_2',
+                TAFZIL_3: 'TAFZIL_3',
+                TAFZIL_4: 'TAFZIL_4',
+                TAFZIL_5: 'TAFZIL_5',
+                TAFZIL_6: 'TAFZIL_6',
+                TAFZIL_7: 'TAFZIL_7',
+                TAFZIL_8: 'TAFZIL_8',
+                TAFZIL_9: 'TAFZIL_9',
+                TAFZIL_10: 'TAFZIL_10'
+              }[accountTemplate()!.levelInTree ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.debitAmount' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.debitAmount"
+              >Debit Amount</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountTemplate()!.debitAmount }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.creditAmount' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.creditAmount"
+              >Credit Amount</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountTemplate()!.creditAmount }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.typeInFormula' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.typeInFormula"
+              >Type In Formula</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.AccountingFormulaType.' + (accountTemplate()!.typeInFormula ?? 'null')">{{
+              {
+                null: '',
+                ASSETS: 'ASSETS',
+                EXPENSES: 'EXPENSES',
+                DIVIDENDS: 'DIVIDENDS',
+                LIABILITIES: 'LIABILITIES',
+                OWNERS_EQUITY: 'OWNERS_EQUITY',
+                REVENUE: 'REVENUE'
+              }[accountTemplate()!.typeInFormula ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.status">Status</span></dt>
+          <dd>
+            @if (accountTemplate()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', accountTemplate()!.status?.id, 'view']">{{
+                  accountTemplate()!.status?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.internalUser">Internal User</span></dt>
+          <dd>
+            @if (accountTemplate()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', accountTemplate()!.internalUser?.id, 'view']">{{
+                  accountTemplate()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.company">Company</span></dt>
+          <dd>
+            @if (accountTemplate()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', accountTemplate()!.company?.id, 'view']">{{
+                  accountTemplate()!.company?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/account-template', accountTemplate()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

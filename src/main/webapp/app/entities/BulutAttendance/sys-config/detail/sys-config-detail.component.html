@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (sysConfig()) {
+      <div>
+        <h2 data-cy="sysConfigDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceSysConfig.detail.title">Sys Config</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceSysConfig.taxFormula">Tax Formula</span></dt>
+          <dd>
+            <span>{{ sysConfig()!.taxFormula }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceSysConfig.sanavatFormula">Sanavat Formula</span></dt>
+          <dd>
+            <span>{{ sysConfig()!.sanavatFormula }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceSysConfig.year">Year</span></dt>
+          <dd>
+            <span>{{ sysConfig()!.year }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceSysConfig.id">Id</span></dt>
+          <dd>
+            <span>{{ sysConfig()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceSysConfig.status">Status</span></dt>
+          <dd>
+            @if (sysConfig()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', sysConfig()!.status?.id, 'view']">{{ sysConfig()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceSysConfig.internalUser">Internal User</span></dt>
+          <dd>
+            @if (sysConfig()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', sysConfig()!.internalUser?.id, 'view']">{{
+                  sysConfig()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceSysConfig.company">Company</span></dt>
+          <dd>
+            @if (sysConfig()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', sysConfig()!.company?.id, 'view']">{{ sysConfig()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/sys-config', sysConfig()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

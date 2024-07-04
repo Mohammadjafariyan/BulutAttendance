@@ -1,0 +1,48 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154252"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "عملیات حسابداری",
+  "fields": [
+    {
+      "documentation": "عنوان",
+      "fieldName": "title",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "AccountingProcedure",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "عملیات حسابداری می تواند بعد از عملیات دیگر اجرا شود\\n",
+      "otherEntityName": "accountingProcedure",
+      "relationshipName": "executeAfter",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

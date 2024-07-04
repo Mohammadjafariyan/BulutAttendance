@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (company()) {
+      <div>
+        <h2 data-cy="companyDetailsHeading"><span jhiTranslate="bulutAttendanceApp.bulutAttendanceCompany.detail.title">Company</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">شناسه</span></dt>
+          <dd>
+            <span>{{ company()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceCompany.title">Title</span></dt>
+          <dd>
+            <span>{{ company()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceCompany.logo">Logo</span></dt>
+          <dd>
+            <span>{{ company()!.logo }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceCompany.status">Status</span></dt>
+          <dd>
+            @if (company()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', company()!.status?.id, 'view']">{{ company()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceCompany.internalUser">Internal User</span></dt>
+          <dd>
+            @if (company()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', company()!.internalUser?.id, 'view']">{{
+                  company()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/company', company()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,209 @@
+<div>
+  <h2 id="page-heading" data-cy="AccountingProcedureExecutionHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.home.title">Accounting Procedure Executions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-accounting-procedure-execution"
+        [routerLink]="['/bulutattendance/accounting-procedure-execution/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.home.createLabel"
+          >Create a new Accounting Procedure Execution</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label
+          class="visually-hidden"
+          for="currentSearch"
+          jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.home.search"
+          >Search for Accounting Procedure Execution</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (accountingProcedureExecutions?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.home.notFound"
+        >No Accounting Procedure Executions found</span
+      >
+    </div>
+  }
+
+  @if (accountingProcedureExecutions && accountingProcedureExecutions.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">شناسه</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateTime">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.dateTime">Date Time</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="desc">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.desc">Desc</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="procedure.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedureExecution.procedure">Procedure</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (accountingProcedureExecution of accountingProcedureExecutions; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/bulutattendance/accounting-procedure-execution', accountingProcedureExecution.id, 'view']">{{
+                  accountingProcedureExecution.id
+                }}</a>
+              </td>
+              <td>{{ accountingProcedureExecution.dateTime | formatMediumDatetime }}</td>
+              <td>{{ accountingProcedureExecution.desc }}</td>
+              <td>
+                @if (accountingProcedureExecution.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', accountingProcedureExecution.internalUser.id, 'view']">{{
+                      accountingProcedureExecution.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accountingProcedureExecution.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', accountingProcedureExecution.company.id, 'view']">{{
+                      accountingProcedureExecution.company.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accountingProcedureExecution.procedure) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/accounting-procedure', accountingProcedureExecution.procedure.id, 'view']">{{
+                      accountingProcedureExecution.procedure.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/accounting-procedure-execution', accountingProcedureExecution.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/accounting-procedure-execution', accountingProcedureExecution.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button
+                    type="submit"
+                    (click)="delete(accountingProcedureExecution)"
+                    class="btn btn-danger btn-sm"
+                    data-cy="entityDeleteButton"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (accountingProcedureExecutions && accountingProcedureExecutions.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

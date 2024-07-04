@@ -1,0 +1,31 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceTaxTemplate": {
+      "home": {
+        "title": "Tax Templates",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tax Template",
+        "createOrEditLabel": "Create or edit a Tax Template",
+        "search": "Search for Tax Template",
+        "notFound": "No Tax Templates found"
+      },
+      "created": "A new Tax Template is created with identifier {{ param }}",
+      "updated": "A Tax Template is updated with identifier {{ param }}",
+      "deleted": "A Tax Template is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tax Template {{ id }}?"
+      },
+      "detail": {
+        "title": "Tax Template"
+      },
+      "rangeFrom": "Range From",
+      "rangeTo": "Range To",
+      "percent": "Percent",
+      "year": "Year",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

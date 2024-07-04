@@ -1,0 +1,29 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceOrgUnit": {
+      "home": {
+        "title": "Org Units",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Org Unit",
+        "createOrEditLabel": "Create or edit a Org Unit",
+        "search": "Search for Org Unit",
+        "notFound": "No Org Units found"
+      },
+      "created": "A new Org Unit is created with identifier {{ param }}",
+      "updated": "A Org Unit is updated with identifier {{ param }}",
+      "deleted": "A Org Unit is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Org Unit {{ id }}?"
+      },
+      "detail": {
+        "title": "Org Unit"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "parent": "Parent"
+    }
+  }
+}

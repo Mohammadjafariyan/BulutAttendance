@@ -1,0 +1,25 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceApplicationUser": {
+      "home": {
+        "title": "Application Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Application User",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Application User",
+        "search": "Գտնել Application User",
+        "notFound": "No Application Users found"
+      },
+      "created": "Նոր Application User ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Application User թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Application User հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Application User {{ id }}?"
+      },
+      "detail": {
+        "title": "Application User"
+      },
+      "id": "ID",
+      "userId": "User Id"
+    }
+  }
+}

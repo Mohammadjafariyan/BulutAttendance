@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154315"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "تراکنش های هر حساب",
+  "fields": [
+    {
+      "documentation": "مبلغ بدهکار",
+      "fieldName": "debitAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "مبلغ بستانکار",
+      "fieldName": "creditAmount",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "TransactionAccount",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "هر رکورد از سند حسابداری\\n",
+      "otherEntityName": "accountHesab",
+      "relationshipName": "account",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "transaction",
+      "relationshipName": "transaction",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

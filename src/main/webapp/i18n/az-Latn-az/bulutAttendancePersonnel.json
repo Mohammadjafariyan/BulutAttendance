@@ -1,0 +1,38 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendancePersonnel": {
+      "home": {
+        "title": "Personnel",
+        "refreshListLabel": "Siyahını yenilə",
+        "createLabel": "Yeni Personnel əlavə et",
+        "createOrEditLabel": "Yeni Personnel əlavə et və ya yenilə",
+        "search": "Personnel axtar",
+        "notFound": "Personnel məlumatı tapılmadı"
+      },
+      "created": "{{ param }} ID ilə bir Personnel əlavə edildi",
+      "updated": "{{ param }} nolu Personnel dəyişildi",
+      "deleted": "{{ param }} nolu Personnel silindi",
+      "delete": {
+        "question": "{{ id }} nolu Personnel silinəcək. Davam etmək istəyirsiniz?"
+      },
+      "detail": {
+        "title": "Personnel"
+      },
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "requitmentDate": "Requitment Date",
+      "father": "Father",
+      "shenasname": "Shenasname",
+      "mahalesodur": "Mahalesodur",
+      "birthday": "Birthday",
+      "isSingle": "Is Single",
+      "lastEducation": "Last Education",
+      "educationField": "Education Field",
+      "children": "Children",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

@@ -1,0 +1,255 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (accProccParameter()) {
+      <div>
+        <h2 data-cy="accProccParameterDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.detail.title">Acc Procc Parameter</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">شناسه</span></dt>
+          <dd>
+            <span>{{ accProccParameter()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.title' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.title"
+              >Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accProccParameter()!.title }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.manualOrAuto' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.manualOrAuto"
+              >Manual Or Auto</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.CalcType.' + (accProccParameter()!.manualOrAuto ?? 'null')">{{
+              { null: '', ByHand: 'ByHand', BySystem: 'BySystem', Constant: 'Constant' }[accProccParameter()!.manualOrAuto ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.formula' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.formula"
+              >Formula</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accProccParameter()!.formula }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.unit' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.unit"
+              >Unit</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.CalcUnit.' + (accProccParameter()!.unit ?? 'null')">{{
+              { null: '', Daily: 'Daily', Hourly: 'Hourly' }[accProccParameter()!.unit ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.isDeducTax' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.isDeducTax"
+              >Is Deduc Tax</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accProccParameter()!.isDeducTax }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.isDeducInsurance' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.isDeducInsurance"
+              >Is Deduc Insurance</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accProccParameter()!.isDeducInsurance }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.laborTime' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.laborTime"
+              >Labor Time</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.LaborTime.' + (accProccParameter()!.laborTime ?? 'null')">{{
+              {
+                null: '',
+                STANDARD: 'کارکرد موظف (استاندارد',
+                EFFECTIVE: 'کارکرد موثر',
+                LACK_OF_WORK_AND_ABSENT: 'کسری کار و غیبت',
+                OVERTIME: 'اضافه کاری',
+                NOT_EFFECTIVE: 'کارکرد غیر موثر',
+                SHIFT_10: 'نوبت کاری 10 درصد',
+                SHIFT_15: 'نوبت کاری 15 درصد',
+                SHIFT_22_5: 'نوبت کاری 22.5 درصد',
+                NIGHT_WORK: 'شب کاری',
+                MISSION_WORK: 'ماموریت',
+                HOLIDAY_WORK: 'تعطیل کاری',
+                TOTAL_WORK_DAY: 'مدت اشتغال کل ( روز',
+                TOTAL_WORK_CURRENT_YEAR: 'کارکرد سال جاری ( روز ',
+                REMAIN_LEAVE_HOURLY: 'باقی مانده مرخصی (ساعت',
+                REMAIN_LEAVE_DAILY: 'باقی مانده مرخصی (روز',
+                Other: 'سایر',
+                SANAVAT: 'سنوات پایان خدمت',
+                TOTAL_WORK: 'کل کارکرد'
+              }[accProccParameter()!.laborTime ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.hokm' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.hokm"
+              >Hokm</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.Hokm.' + (accProccParameter()!.hokm ?? 'null')">{{
+              {
+                null: '',
+                Other: 'سایر',
+                BASE: 'حقوق پایه',
+                CHILD: 'حق اولاد',
+                LABOR: 'بن کارگری',
+                FOOD: 'بن خواربار',
+                RANGE: 'مزد رتبه',
+                ROLE: 'مزایای پست',
+                EFFECTIVENESS: 'فوق العاده کارایی',
+                HOUSE: 'حق مسکن',
+                TOTAL_HOKM: 'جمع حکم'
+              }[accProccParameter()!.hokm ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.earnings' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.earnings"
+              >Earnings</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.Earning.' + (accProccParameter()!.earnings ?? 'null')">{{
+              {
+                null: '',
+                Other: 'سایر',
+                OverTime: 'اضافه کار',
+                Shift: 'فوق العاده نوبت کاری',
+                Night: 'فوق العاده شب کاری',
+                Holiday_Work: 'فوق العاده تعطیل کاری',
+                Mission: 'حق ماموریت',
+                Tax_Insurance: 'سایر پرداختنی های مشمول بیمه و مالیات',
+                OtherEarning_Tax: 'سایر پرداختنی های مشمول مالیات',
+                OtherEarning_Insurance: 'سایر پرداختنی های مشمول بیمه',
+                Total: 'جمع حقوق و مزایا',
+                Total_Insurance: 'جمع حقوق و مزایای مشمول بیمه',
+                Net_Salary_Paid: 'خالص پرداختی حقوق',
+                Total_Tax: 'جمع حقوق و مزایای مشمول مالیات',
+                LEAVE: 'بازخرید مرخصی ',
+                YEARLY_BONUS: 'عیدی',
+                YEARS_OF_SERVICE: 'سنوات خدمت',
+                BONUS: 'پاداش'
+              }[accProccParameter()!.earnings ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.deduction' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.deduction"
+              >Deduction</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.Deduction.' + (accProccParameter()!.deduction ?? 'null')">{{
+              {
+                null: '',
+                Other: 'سایر',
+                Insurance_Labor: 'سهم بیمه کارگر 7 درصد',
+                Tax: 'مالیات',
+                Judicial: 'کسور قضایی',
+                Prepaid: 'مساعده',
+                Loan: 'اقساط وام',
+                LastMonthOverPaid: 'اضافه پرداخت ماه قبل',
+                Lack_of_work_and_absence: 'کسری کار و غیبت',
+                Supplementary_insurance: 'بیمه تکمیلی',
+                Total_Deduction: 'جمع کسور'
+              }[accProccParameter()!.deduction ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccProccParameter.help.other' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.other"
+              >Other</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.Deduction.' + (accProccParameter()!.other ?? 'null')">{{
+              {
+                null: '',
+                Other: 'سایر',
+                Insurance_Labor: 'سهم بیمه کارگر 7 درصد',
+                Tax: 'مالیات',
+                Judicial: 'کسور قضایی',
+                Prepaid: 'مساعده',
+                Loan: 'اقساط وام',
+                LastMonthOverPaid: 'اضافه پرداخت ماه قبل',
+                Lack_of_work_and_absence: 'کسری کار و غیبت',
+                Supplementary_insurance: 'بیمه تکمیلی',
+                Total_Deduction: 'جمع کسور'
+              }[accProccParameter()!.other ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.internalUser">Internal User</span></dt>
+          <dd>
+            @if (accProccParameter()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', accProccParameter()!.internalUser?.id, 'view']">{{
+                  accProccParameter()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.company">Company</span></dt>
+          <dd>
+            @if (accProccParameter()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', accProccParameter()!.company?.id, 'view']">{{
+                  accProccParameter()!.company?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/bulutattendance/acc-procc-parameter', accProccParameter()!.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

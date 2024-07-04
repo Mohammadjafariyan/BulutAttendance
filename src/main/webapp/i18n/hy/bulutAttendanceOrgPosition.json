@@ -1,0 +1,28 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceOrgPosition": {
+      "home": {
+        "title": "Org Positions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Org Position",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Org Position",
+        "search": "Գտնել Org Position",
+        "notFound": "No Org Positions found"
+      },
+      "created": "Նոր Org Position ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Org Position թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Org Position հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Org Position {{ id }}?"
+      },
+      "detail": {
+        "title": "Org Position"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

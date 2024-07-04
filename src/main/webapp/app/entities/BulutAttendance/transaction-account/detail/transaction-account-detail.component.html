@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (transactionAccount()) {
+      <div>
+        <h2 data-cy="transactionAccountDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.detail.title">Transaction Account</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">شناسه</span></dt>
+          <dd>
+            <span>{{ transactionAccount()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceTransactionAccount.help.debitAmount' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.debitAmount"
+              >Debit Amount</span
+            >
+          </dt>
+          <dd>
+            <span>{{ transactionAccount()!.debitAmount }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceTransactionAccount.help.creditAmount' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.creditAmount"
+              >Credit Amount</span
+            >
+          </dt>
+          <dd>
+            <span>{{ transactionAccount()!.creditAmount }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.internalUser">Internal User</span></dt>
+          <dd>
+            @if (transactionAccount()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', transactionAccount()!.internalUser?.id, 'view']">{{
+                  transactionAccount()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.company">Company</span></dt>
+          <dd>
+            @if (transactionAccount()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', transactionAccount()!.company?.id, 'view']">{{
+                  transactionAccount()!.company?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.account">Account</span></dt>
+          <dd>
+            @if (transactionAccount()!.account) {
+              <div>
+                <a [routerLink]="['/bulutattendance/account-hesab', transactionAccount()!.account?.id, 'view']">{{
+                  transactionAccount()!.account?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.transaction">Transaction</span></dt>
+          <dd>
+            @if (transactionAccount()!.transaction) {
+              <div>
+                <a [routerLink]="['/bulutattendance/transaction', transactionAccount()!.transaction?.id, 'view']">{{
+                  transactionAccount()!.transaction?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/bulutattendance/transaction-account', transactionAccount()!.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

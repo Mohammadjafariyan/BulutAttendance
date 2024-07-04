@@ -1,0 +1,47 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccountTemplate": {
+      "home": {
+        "title": "Account Templates",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Account Template",
+        "createOrEditLabel": "Create or edit a Account Template",
+        "search": "Search for Account Template",
+        "notFound": "No Account Templates found"
+      },
+      "created": "A new Account Template is created with identifier {{ param }}",
+      "updated": "A Account Template is updated with identifier {{ param }}",
+      "deleted": "A Account Template is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Account Template {{ id }}?"
+      },
+      "detail": {
+        "title": "Account Template"
+      },
+      "title": "Title",
+      "code": "Code",
+      "level": "Level",
+      "levelTitle": "Level Title",
+      "id": "Id",
+      "type": "Type",
+      "levelInTree": "Level In Tree",
+      "debitAmount": "Debit Amount",
+      "creditAmount": "Credit Amount",
+      "typeInFormula": "Type In Formula",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "title": "نام حساب",
+        "code": "کد حساب",
+        "level": "سطح حساب",
+        "levelTitle": "عنوان سطح حساب",
+        "type": "ماهیت حساب : بدهکار یا بستانکار",
+        "levelInTree": "سطح حساب داری : کل ، معین ، تفظیل",
+        "debitAmount": "مانده بدهکار",
+        "creditAmount": "مانده بستانکار",
+        "typeInFormula": "تاثیر در فرمول معادله حسابداری"
+      }
+    }
+  }
+}

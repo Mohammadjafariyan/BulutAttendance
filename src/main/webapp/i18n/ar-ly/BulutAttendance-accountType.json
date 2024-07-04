@@ -1,0 +1,9 @@
+{
+  "bulutAttendanceApp": {
+    "AccountType": {
+      "null": "",
+      "Credit": "Credit",
+      "Debit": "Debit"
+    }
+  }
+}

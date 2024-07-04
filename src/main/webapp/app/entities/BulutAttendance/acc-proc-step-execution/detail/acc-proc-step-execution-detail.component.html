@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (accProcStepExecution()) {
+      <div>
+        <h2 data-cy="accProcStepExecutionDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.detail.title">Acc Proc Step Execution</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">شناسه</span></dt>
+          <dd>
+            <span>{{ accProcStepExecution()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.debitAmount">Debit Amount</span></dt>
+          <dd>
+            <span>{{ accProcStepExecution()!.debitAmount }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.creditAmount">Credit Amount</span></dt>
+          <dd>
+            <span>{{ accProcStepExecution()!.creditAmount }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.desc">Desc</span></dt>
+          <dd>
+            <span>{{ accProcStepExecution()!.desc }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.internalUser">Internal User</span></dt>
+          <dd>
+            @if (accProcStepExecution()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', accProcStepExecution()!.internalUser?.id, 'view']">{{
+                  accProcStepExecution()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.company">Company</span></dt>
+          <dd>
+            @if (accProcStepExecution()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', accProcStepExecution()!.company?.id, 'view']">{{
+                  accProcStepExecution()!.company?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.creditAccount">Credit Account</span></dt>
+          <dd>
+            @if (accProcStepExecution()!.creditAccount) {
+              <div>
+                <a [routerLink]="['/bulutattendance/account-hesab', accProcStepExecution()!.creditAccount?.id, 'view']">{{
+                  accProcStepExecution()!.creditAccount?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.debitAccount">Debit Account</span></dt>
+          <dd>
+            @if (accProcStepExecution()!.debitAccount) {
+              <div>
+                <a [routerLink]="['/bulutattendance/account-hesab', accProcStepExecution()!.debitAccount?.id, 'view']">{{
+                  accProcStepExecution()!.debitAccount?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.procedure">Procedure</span></dt>
+          <dd>
+            @if (accProcStepExecution()!.procedure) {
+              <div>
+                <a [routerLink]="['/bulutattendance/accounting-procedure-execution', accProcStepExecution()!.procedure?.id, 'view']">{{
+                  accProcStepExecution()!.procedure?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStepExecution.step">Step</span></dt>
+          <dd>
+            @if (accProcStepExecution()!.step) {
+              <div>
+                <a [routerLink]="['/bulutattendance/acc-proc-step', accProcStepExecution()!.step?.id, 'view']">{{
+                  accProcStepExecution()!.step?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/bulutattendance/acc-proc-step-execution', accProcStepExecution()!.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

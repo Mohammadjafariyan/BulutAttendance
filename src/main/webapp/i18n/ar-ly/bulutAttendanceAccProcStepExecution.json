@@ -1,0 +1,33 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccProcStepExecution": {
+      "home": {
+        "title": "Acc Proc Step Executions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Acc Proc Step Execution",
+        "createOrEditLabel": "Create or edit a Acc Proc Step Execution",
+        "search": "Search for Acc Proc Step Execution",
+        "notFound": "No Acc Proc Step Executions found"
+      },
+      "created": "A new Acc Proc Step Execution is created with identifier {{ param }}",
+      "updated": "A Acc Proc Step Execution is updated with identifier {{ param }}",
+      "deleted": "A Acc Proc Step Execution is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Acc Proc Step Execution {{ id }}?"
+      },
+      "detail": {
+        "title": "Acc Proc Step Execution"
+      },
+      "id": "ID",
+      "debitAmount": "Debit Amount",
+      "creditAmount": "Credit Amount",
+      "desc": "Desc",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "creditAccount": "Credit Account",
+      "debitAccount": "Debit Account",
+      "procedure": "Procedure",
+      "step": "Step"
+    }
+  }
+}

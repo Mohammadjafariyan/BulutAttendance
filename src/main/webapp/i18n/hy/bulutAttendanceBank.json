@@ -1,0 +1,33 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceBank": {
+      "home": {
+        "title": "Banks",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Bank",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Bank",
+        "search": "Գտնել Bank",
+        "notFound": "No Banks found"
+      },
+      "created": "Նոր Bank ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Bank թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Bank հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Bank {{ id }}?"
+      },
+      "detail": {
+        "title": "Bank"
+      },
+      "title": "Title",
+      "code": "Code",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "title": "عنوان",
+        "code": "کد"
+      }
+    }
+  }
+}

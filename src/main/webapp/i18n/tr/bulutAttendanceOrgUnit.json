@@ -1,0 +1,29 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceOrgUnit": {
+      "home": {
+        "title": "Org Units",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Org Unit ekle",
+        "createOrEditLabel": "Yeni Org Unit ekle veya guncelle",
+        "search": "Org Unit ara",
+        "notFound": "Org Units kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Org Unit eklendi",
+      "updated": "{{ param }} nolu Org Unit guncellendi",
+      "deleted": "{{ param }} nolu Org Unit silindi",
+      "delete": {
+        "question": "{{ id }} nolu Org Unit silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Org Unit"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "parent": "Parent"
+    }
+  }
+}

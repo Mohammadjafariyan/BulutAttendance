@@ -1,0 +1,27 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceRecordStatus": {
+      "home": {
+        "title": "Record Statuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Record Status",
+        "createOrEditLabel": "Create or edit a Record Status",
+        "search": "Search for Record Status",
+        "notFound": "No Record Statuses found"
+      },
+      "created": "A new Record Status is created with identifier {{ param }}",
+      "updated": "A Record Status is updated with identifier {{ param }}",
+      "deleted": "A Record Status is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Record Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Record Status"
+      },
+      "fromDateTime": "From Date Time",
+      "toDateTime": "To Date Time",
+      "isDeleted": "Is Deleted",
+      "id": "Id"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceTransaction": {
+      "home": {
+        "title": "Transactions",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Transaction ekle",
+        "createOrEditLabel": "Yeni Transaction ekle veya guncelle",
+        "search": "Transaction ara",
+        "notFound": "Transactions kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Transaction eklendi",
+      "updated": "{{ param }} nolu Transaction guncellendi",
+      "deleted": "{{ param }} nolu Transaction silindi",
+      "delete": {
+        "question": "{{ id }} nolu Transaction silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Transaction"
+      },
+      "id": "ID",
+      "issueDateTime": "Issue Date Time",
+      "totalAmount": "Total Amount",
+      "desc": "Desc",
+      "docNumber": "Doc Number",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "issueDateTime": "تاریخ",
+        "totalAmount": "مبلغ کل",
+        "desc": "توضیحات",
+        "docNumber": "شماره سند"
+      }
+    }
+  }
+}

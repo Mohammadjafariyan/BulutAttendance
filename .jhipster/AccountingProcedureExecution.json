@@ -1,0 +1,47 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154253"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "ثبت لاگ اجرای عملیات حسابداری\\n",
+  "fields": [
+    {
+      "documentation": "تاریخ اجرا\\n",
+      "fieldName": "dateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "documentation": "توضیحات\\n",
+      "fieldName": "desc",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "AccountingProcedureExecution",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "اجرا های عملیات حسابداری\\n",
+      "otherEntityName": "accountingProcedure",
+      "relationshipName": "procedure",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

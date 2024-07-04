@@ -1,0 +1,33 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceBank": {
+      "home": {
+        "title": "Banks",
+        "refreshListLabel": "Siyahını yenilə",
+        "createLabel": "Yeni Bank əlavə et",
+        "createOrEditLabel": "Yeni Bank əlavə et və ya yenilə",
+        "search": "Bank axtar",
+        "notFound": "Banks məlumatı tapılmadı"
+      },
+      "created": "{{ param }} ID ilə bir Bank əlavə edildi",
+      "updated": "{{ param }} nolu Bank dəyişildi",
+      "deleted": "{{ param }} nolu Bank silindi",
+      "delete": {
+        "question": "{{ id }} nolu Bank silinəcək. Davam etmək istəyirsiniz?"
+      },
+      "detail": {
+        "title": "Bank"
+      },
+      "title": "Title",
+      "code": "Code",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "title": "عنوان",
+        "code": "کد"
+      }
+    }
+  }
+}

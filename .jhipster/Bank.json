@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154259"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "documentation": "عنوان",
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "کد",
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "Bank",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

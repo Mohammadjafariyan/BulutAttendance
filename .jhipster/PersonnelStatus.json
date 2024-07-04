@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154310"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "جانباز ، عادی\\nکارورز ، سهامدار و...",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "PersonnelStatus",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

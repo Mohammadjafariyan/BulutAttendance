@@ -1,0 +1,156 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (hrLetter()) {
+      <div>
+        <h2 data-cy="hrLetterDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.detail.title">Hr Letter</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceHrLetter.help.title' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.title"
+              >Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ hrLetter()!.title }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceHrLetter.help.uniqueNumber' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.uniqueNumber"
+              >Unique Number</span
+            >
+          </dt>
+          <dd>
+            <span>{{ hrLetter()!.uniqueNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.id">Id</span></dt>
+          <dd>
+            <span>{{ hrLetter()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceHrLetter.help.issueDate' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.issueDate"
+              >Issue Date</span
+            >
+          </dt>
+          <dd>
+            <span>{{ hrLetter()!.issueDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceHrLetter.help.executionDate' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.executionDate"
+              >Execution Date</span
+            >
+          </dt>
+          <dd>
+            <span>{{ hrLetter()!.executionDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.bpmsApproveStatus">Bpms Approve Status</span></dt>
+          <dd>
+            <span>{{ hrLetter()!.bpmsApproveStatus }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.status">Status</span></dt>
+          <dd>
+            @if (hrLetter()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', hrLetter()!.status?.id, 'view']">{{ hrLetter()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.type">Type</span></dt>
+          <dd>
+            @if (hrLetter()!.type) {
+              <div>
+                <a [routerLink]="['/bulutattendance/hr-letter-type', hrLetter()!.type?.id, 'view']">{{ hrLetter()!.type?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.personnelId">Personnel Id</span></dt>
+          <dd>
+            @if (hrLetter()!.personnelId) {
+              <div>
+                <a [routerLink]="['/bulutattendance/personnel', hrLetter()!.personnelId?.id, 'view']">{{ hrLetter()!.personnelId?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.orgPosition">Org Position</span></dt>
+          <dd>
+            @if (hrLetter()!.orgPosition) {
+              <div>
+                <a [routerLink]="['/bulutattendance/org-position', hrLetter()!.orgPosition?.id, 'view']">{{
+                  hrLetter()!.orgPosition?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.orgUnit">Org Unit</span></dt>
+          <dd>
+            @if (hrLetter()!.orgUnit) {
+              <div>
+                <a [routerLink]="['/bulutattendance/org-unit', hrLetter()!.orgUnit?.id, 'view']">{{ hrLetter()!.orgUnit?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.personnelStatus">Personnel Status</span></dt>
+          <dd>
+            @if (hrLetter()!.personnelStatus) {
+              <div>
+                <a [routerLink]="['/bulutattendance/personnel-status', hrLetter()!.personnelStatus?.id, 'view']">{{
+                  hrLetter()!.personnelStatus?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.hrLetterParameter">Hr Letter Parameter</span></dt>
+          <dd>
+            @if (hrLetter()!.hrLetterParameter) {
+              <div>
+                <a [routerLink]="['/bulutattendance/hr-letter-parameter', hrLetter()!.hrLetterParameter?.id, 'view']">{{
+                  hrLetter()!.hrLetterParameter?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.internalUser">Internal User</span></dt>
+          <dd>
+            @if (hrLetter()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', hrLetter()!.internalUser?.id, 'view']">{{
+                  hrLetter()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.company">Company</span></dt>
+          <dd>
+            @if (hrLetter()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', hrLetter()!.company?.id, 'view']">{{ hrLetter()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/hr-letter', hrLetter()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

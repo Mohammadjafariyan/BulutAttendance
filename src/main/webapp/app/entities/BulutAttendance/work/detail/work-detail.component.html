@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (work()) {
+      <div>
+        <h2 data-cy="workDetailsHeading"><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.detail.title">Work</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.id">Id</span></dt>
+          <dd>
+            <span>{{ work()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceWork.help.issueDate' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.issueDate"
+              >Issue Date</span
+            >
+          </dt>
+          <dd>
+            <span>{{ work()!.issueDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceWork.help.desc' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.desc"
+              >Desc</span
+            >
+          </dt>
+          <dd>
+            <span>{{ work()!.desc }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceWork.help.year' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.year"
+              >Year</span
+            >
+          </dt>
+          <dd>
+            <span>{{ work()!.year }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceWork.help.month' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.month"
+              >Month</span
+            >
+          </dt>
+          <dd>
+            <span>{{ work()!.month }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.internalUser">Internal User</span></dt>
+          <dd>
+            @if (work()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', work()!.internalUser?.id, 'view']">{{ work()!.internalUser?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.company">Company</span></dt>
+          <dd>
+            @if (work()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', work()!.company?.id, 'view']">{{ work()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/work', work()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

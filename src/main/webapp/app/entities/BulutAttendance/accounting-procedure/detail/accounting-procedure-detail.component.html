@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (accountingProcedure()) {
+      <div>
+        <h2 data-cy="accountingProcedureDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedure.detail.title">Accounting Procedure</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">شناسه</span></dt>
+          <dd>
+            <span>{{ accountingProcedure()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountingProcedure.help.title' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedure.title"
+              >Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ accountingProcedure()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedure.status">Status</span></dt>
+          <dd>
+            @if (accountingProcedure()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', accountingProcedure()!.status?.id, 'view']">{{
+                  accountingProcedure()!.status?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedure.internalUser">Internal User</span></dt>
+          <dd>
+            @if (accountingProcedure()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', accountingProcedure()!.internalUser?.id, 'view']">{{
+                  accountingProcedure()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedure.company">Company</span></dt>
+          <dd>
+            @if (accountingProcedure()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', accountingProcedure()!.company?.id, 'view']">{{
+                  accountingProcedure()!.company?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountingProcedure.executeAfter">Execute After</span></dt>
+          <dd>
+            @if (accountingProcedure()!.executeAfter) {
+              <div>
+                <a [routerLink]="['/bulutattendance/accounting-procedure', accountingProcedure()!.executeAfter?.id, 'view']">{{
+                  accountingProcedure()!.executeAfter?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/bulutattendance/accounting-procedure', accountingProcedure()!.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

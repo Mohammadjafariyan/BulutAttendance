@@ -1,0 +1,223 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-personnel-heading"
+        data-cy="PersonnelCreateUpdateHeading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.home.createOrEditLabel"
+      >
+        Create or edit a Personnel
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_firstName" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.firstName"
+            >First Name</label
+          >
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lastName" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.lastName"
+            >Last Name</label
+          >
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_requitmentDate" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.requitmentDate"
+            >Requitment Date</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="requitmentDate"
+            id="field_requitmentDate"
+            data-cy="requitmentDate"
+            formControlName="requitmentDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_father" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.father">Father</label>
+          <input type="text" class="form-control" name="father" id="field_father" data-cy="father" formControlName="father" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_shenasname" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.shenasname"
+            >Shenasname</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="shenasname"
+            id="field_shenasname"
+            data-cy="shenasname"
+            formControlName="shenasname"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_mahalesodur" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.mahalesodur"
+            >Mahalesodur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="mahalesodur"
+            id="field_mahalesodur"
+            data-cy="mahalesodur"
+            formControlName="mahalesodur"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_birthday" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.birthday"
+            >Birthday</label
+          >
+          <input type="text" class="form-control" name="birthday" id="field_birthday" data-cy="birthday" formControlName="birthday" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_isSingle" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.isSingle"
+            >Is Single</label
+          >
+          <input type="text" class="form-control" name="isSingle" id="field_isSingle" data-cy="isSingle" formControlName="isSingle" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lastEducation" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.lastEducation"
+            >Last Education</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastEducation"
+            id="field_lastEducation"
+            data-cy="lastEducation"
+            formControlName="lastEducation"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_educationField" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.educationField"
+            >Education Field</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="educationField"
+            id="field_educationField"
+            data-cy="educationField"
+            formControlName="educationField"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_children" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.children"
+            >Children</label
+          >
+          <input type="number" class="form-control" name="children" id="field_children" data-cy="children" formControlName="children" />
+          @if (editForm.get('children')!.invalid && (editForm.get('children')!.dirty || editForm.get('children')!.touched)) {
+            <div>
+              @if (editForm.get('children')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '42' }"
+                  >این فیلد باید بیشتر از 42 باشد.</small
+                >
+              }
+              @if (editForm.get('children')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '42' }"
+                  >این فیلد نمی‌تواند بیش از 42 باشد.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('children')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >این فیلد باید عدد باشد.</small
+              >
+            </div>
+          }
+        </div>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.status">Status</label>
+          <select
+            class="form-control"
+            id="field_status"
+            data-cy="status"
+            name="status"
+            formControlName="status"
+            [compareWith]="compareRecordStatus"
+          >
+            <option [ngValue]="null"></option>
+            @for (recordStatusOption of recordStatusesSharedCollection; track $index) {
+              <option [ngValue]="recordStatusOption">{{ recordStatusOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_internalUser" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.internalUser"
+            >Internal User</label
+          >
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (applicationUserOption of applicationUsersSharedCollection; track $index) {
+              <option [ngValue]="applicationUserOption">{{ applicationUserOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_company" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.company">Company</label>
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            @for (companyOption of companiesSharedCollection; track $index) {
+              <option [ngValue]="companyOption">{{ companyOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">ذخیره</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,275 @@
+<div>
+  <h2 id="page-heading" data-cy="PersonnelHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.home.title">Personnel</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-personnel"
+        [routerLink]="['/bulutattendance/personnel/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.home.createLabel"
+          >Create a new Personnel</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.home.search"
+          >Search for Personnel</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendancePersonnel.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (personnel?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.home.notFound">No Personnel found</span>
+    </div>
+  }
+
+  @if (personnel && personnel.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="firstName">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.firstName">First Name</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastName">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.lastName">Last Name</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="requitmentDate">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.requitmentDate">Requitment Date</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="father">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.father">Father</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="shenasname">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.shenasname">Shenasname</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mahalesodur">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.mahalesodur">Mahalesodur</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="birthday">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.birthday">Birthday</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isSingle">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.isSingle">Is Single</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastEducation">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.lastEducation">Last Education</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="educationField">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.educationField">Education Field</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="children">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.children">Children</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.id">Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.status">Status</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (personnel of personnel; track trackId) {
+            <tr data-cy="entityTable">
+              <td>{{ personnel.firstName }}</td>
+              <td>{{ personnel.lastName }}</td>
+              <td>{{ personnel.requitmentDate }}</td>
+              <td>{{ personnel.father }}</td>
+              <td>{{ personnel.shenasname }}</td>
+              <td>{{ personnel.mahalesodur }}</td>
+              <td>{{ personnel.birthday }}</td>
+              <td>{{ personnel.isSingle }}</td>
+              <td>{{ personnel.lastEducation }}</td>
+              <td>{{ personnel.educationField }}</td>
+              <td>{{ personnel.children }}</td>
+              <td>
+                <a [routerLink]="['/bulutattendance/personnel', personnel.id, 'view']">{{ personnel.id }}</a>
+              </td>
+              <td>
+                @if (personnel.status) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/record-status', personnel.status.id, 'view']">{{ personnel.status.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (personnel.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', personnel.internalUser.id, 'view']">{{
+                      personnel.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (personnel.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', personnel.company.id, 'view']">{{ personnel.company.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/personnel', personnel.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/personnel', personnel.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(personnel)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (personnel && personnel.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

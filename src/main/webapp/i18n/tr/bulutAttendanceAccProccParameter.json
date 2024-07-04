@@ -1,0 +1,50 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccProccParameter": {
+      "home": {
+        "title": "Acc Procc Parameters",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Acc Procc Parameter ekle",
+        "createOrEditLabel": "Yeni Acc Procc Parameter ekle veya guncelle",
+        "search": "Acc Procc Parameter ara",
+        "notFound": "Acc Procc Parameters kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Acc Procc Parameter eklendi",
+      "updated": "{{ param }} nolu Acc Procc Parameter guncellendi",
+      "deleted": "{{ param }} nolu Acc Procc Parameter silindi",
+      "delete": {
+        "question": "{{ id }} nolu Acc Procc Parameter silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Acc Procc Parameter"
+      },
+      "id": "ID",
+      "title": "Title",
+      "manualOrAuto": "Manual Or Auto",
+      "formula": "Formula",
+      "unit": "Unit",
+      "isDeducTax": "Is Deduc Tax",
+      "isDeducInsurance": "Is Deduc Insurance",
+      "laborTime": "Labor Time",
+      "hokm": "Hokm",
+      "earnings": "Earnings",
+      "deduction": "Deduction",
+      "other": "Other",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "title": "عنوان",
+        "manualOrAuto": "نحوه محاسبه دستی یا سیستمی",
+        "formula": "فرمول",
+        "unit": "واحد روزانه یا ساعتی",
+        "isDeducTax": "مشمول مالیات",
+        "isDeducInsurance": "مشمول بیمه",
+        "laborTime": "نوع سیستمی پارامتر\nعوامل کارکرد",
+        "hokm": "نوع سیستمی پارامتر\nعوامل حکمی",
+        "earnings": "نوع سیستمی پارامتر\nعوامل حقوق و مزایا",
+        "deduction": "نوع سیستمی پارامتر\nعوامل کسور",
+        "other": "نوع سیستمی پارامتر\nعوامل دیگر"
+      }
+    }
+  }
+}

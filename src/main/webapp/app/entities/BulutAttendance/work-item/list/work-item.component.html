@@ -1,0 +1,200 @@
+<div>
+  <h2 id="page-heading" data-cy="WorkItemHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.home.title">Work Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-work-item"
+        [routerLink]="['/bulutattendance/work-item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.home.createLabel"
+          >Create a new Work Item</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.home.search"
+          >Search for Work Item</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendanceWorkItem.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (workItems?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.home.notFound">No Work Items found</span>
+    </div>
+  }
+
+  @if (workItems && workItems.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.id">Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="amount">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.amount">Amount</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hrLetterParameter.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.hrLetterParameter">Hr Letter Parameter</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="work.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.work">Work</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (workItem of workItems; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/bulutattendance/work-item', workItem.id, 'view']">{{ workItem.id }}</a>
+              </td>
+              <td>{{ workItem.amount }}</td>
+              <td>
+                @if (workItem.hrLetterParameter) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/hr-letter-parameter', workItem.hrLetterParameter.id, 'view']">{{
+                      workItem.hrLetterParameter.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (workItem.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', workItem.internalUser.id, 'view']">{{
+                      workItem.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (workItem.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', workItem.company.id, 'view']">{{ workItem.company.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (workItem.work) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/work', workItem.work.id, 'view']">{{ workItem.work.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/work-item', workItem.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/work-item', workItem.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(workItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (workItems && workItems.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,36 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceWork": {
+      "home": {
+        "title": "Works",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Work",
+        "createOrEditLabel": "Create or edit a Work",
+        "search": "Search for Work",
+        "notFound": "No Works found"
+      },
+      "created": "A new Work is created with identifier {{ param }}",
+      "updated": "A Work is updated with identifier {{ param }}",
+      "deleted": "A Work is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Work {{ id }}?"
+      },
+      "detail": {
+        "title": "Work"
+      },
+      "id": "Id",
+      "issueDate": "Issue Date",
+      "desc": "Desc",
+      "year": "Year",
+      "month": "Month",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "issueDate": "تاریخ ثبت\n",
+        "desc": "توضیحات\n",
+        "year": "برای مثال این فیش یا اطلاعات ثبتی مربوط به کدام سال است\n",
+        "month": "مربوط به کدام ماه است\n"
+      }
+    }
+  }
+}

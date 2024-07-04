@@ -1,0 +1,290 @@
+<div>
+  <h2 id="page-heading" data-cy="AccountTemplateHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.home.title">Account Templates</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-account-template"
+        [routerLink]="['/bulutattendance/account-template/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.home.createLabel"
+          >Create a new Account Template</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.home.search"
+          >Search for Account Template</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendanceAccountTemplate.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (accountTemplates?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.home.notFound">No Account Templates found</span>
+    </div>
+  }
+
+  @if (accountTemplates && accountTemplates.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.title">Title</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="code">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.code">Code</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="level">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.level">Level</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="levelTitle">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.levelTitle">Level Title</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.id">Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="type">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.type">Type</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="levelInTree">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.levelInTree">Level In Tree</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="debitAmount">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.debitAmount">Debit Amount</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creditAmount">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.creditAmount">Credit Amount</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="typeInFormula">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.typeInFormula">Type In Formula</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.status">Status</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (accountTemplate of accountTemplates; track trackId) {
+            <tr data-cy="entityTable">
+              <td>{{ accountTemplate.title }}</td>
+              <td>{{ accountTemplate.code }}</td>
+              <td>{{ accountTemplate.level }}</td>
+              <td>{{ accountTemplate.levelTitle }}</td>
+              <td>
+                <a [routerLink]="['/bulutattendance/account-template', accountTemplate.id, 'view']">{{ accountTemplate.id }}</a>
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.AccountType.' + (accountTemplate.type ?? 'null')">
+                {{ { null: '', Credit: 'Credit', Debit: 'Debit' }[accountTemplate.type ?? 'null'] }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.AccountLevelInTree.' + (accountTemplate.levelInTree ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    GROUP: 'GROUP',
+                    KOL: 'KOL',
+                    MOAYAN: 'MOAYAN',
+                    TAFZIL: 'TAFZIL',
+                    TAFZIL_2: 'TAFZIL_2',
+                    TAFZIL_3: 'TAFZIL_3',
+                    TAFZIL_4: 'TAFZIL_4',
+                    TAFZIL_5: 'TAFZIL_5',
+                    TAFZIL_6: 'TAFZIL_6',
+                    TAFZIL_7: 'TAFZIL_7',
+                    TAFZIL_8: 'TAFZIL_8',
+                    TAFZIL_9: 'TAFZIL_9',
+                    TAFZIL_10: 'TAFZIL_10'
+                  }[accountTemplate.levelInTree ?? 'null']
+                }}
+              </td>
+              <td>{{ accountTemplate.debitAmount }}</td>
+              <td>{{ accountTemplate.creditAmount }}</td>
+              <td [jhiTranslate]="'bulutAttendanceApp.AccountingFormulaType.' + (accountTemplate.typeInFormula ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    ASSETS: 'ASSETS',
+                    EXPENSES: 'EXPENSES',
+                    DIVIDENDS: 'DIVIDENDS',
+                    LIABILITIES: 'LIABILITIES',
+                    OWNERS_EQUITY: 'OWNERS_EQUITY',
+                    REVENUE: 'REVENUE'
+                  }[accountTemplate.typeInFormula ?? 'null']
+                }}
+              </td>
+              <td>
+                @if (accountTemplate.status) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/record-status', accountTemplate.status.id, 'view']">{{
+                      accountTemplate.status.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accountTemplate.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', accountTemplate.internalUser.id, 'view']">{{
+                      accountTemplate.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accountTemplate.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', accountTemplate.company.id, 'view']">{{ accountTemplate.company.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/account-template', accountTemplate.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/account-template', accountTemplate.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(accountTemplate)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (accountTemplates && accountTemplates.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

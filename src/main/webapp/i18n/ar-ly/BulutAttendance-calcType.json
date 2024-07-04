@@ -1,0 +1,10 @@
+{
+  "bulutAttendanceApp": {
+    "CalcType": {
+      "null": "",
+      "ByHand": "ByHand",
+      "BySystem": "BySystem",
+      "Constant": "Constant"
+    }
+  }
+}

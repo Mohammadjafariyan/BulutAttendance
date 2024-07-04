@@ -1,0 +1,33 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceBank": {
+      "home": {
+        "title": "Banks",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bank",
+        "createOrEditLabel": "Create or edit a Bank",
+        "search": "Search for Bank",
+        "notFound": "No Banks found"
+      },
+      "created": "A new Bank is created with identifier {{ param }}",
+      "updated": "A Bank is updated with identifier {{ param }}",
+      "deleted": "A Bank is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bank {{ id }}?"
+      },
+      "detail": {
+        "title": "Bank"
+      },
+      "title": "Title",
+      "code": "Code",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "title": "عنوان",
+        "code": "کد"
+      }
+    }
+  }
+}

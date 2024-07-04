@@ -1,0 +1,29 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceWorkItem": {
+      "home": {
+        "title": "Work Items",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Work Item ekle",
+        "createOrEditLabel": "Yeni Work Item ekle veya guncelle",
+        "search": "Work Item ara",
+        "notFound": "Work Items kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Work Item eklendi",
+      "updated": "{{ param }} nolu Work Item guncellendi",
+      "deleted": "{{ param }} nolu Work Item silindi",
+      "delete": {
+        "question": "{{ id }} nolu Work Item silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Work Item"
+      },
+      "id": "Id",
+      "amount": "Amount",
+      "hrLetterParameter": "Hr Letter Parameter",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "work": "Work"
+    }
+  }
+}

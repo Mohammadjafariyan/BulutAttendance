@@ -1,0 +1,53 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceHrLetterParameter": {
+      "home": {
+        "title": "Hr Letter Parameters",
+        "refreshListLabel": "Siyahını yenilə",
+        "createLabel": "Yeni Hr Letter Parameter əlavə et",
+        "createOrEditLabel": "Yeni Hr Letter Parameter əlavə et və ya yenilə",
+        "search": "Hr Letter Parameter axtar",
+        "notFound": "Hr Letter Parameters məlumatı tapılmadı"
+      },
+      "created": "{{ param }} ID ilə bir Hr Letter Parameter əlavə edildi",
+      "updated": "{{ param }} nolu Hr Letter Parameter dəyişildi",
+      "deleted": "{{ param }} nolu Hr Letter Parameter silindi",
+      "delete": {
+        "question": "{{ id }} nolu Hr Letter Parameter silinəcək. Davam etmək istəyirsiniz?"
+      },
+      "detail": {
+        "title": "Hr Letter Parameter"
+      },
+      "id": "ID",
+      "title": "Title",
+      "manualOrAuto": "Manual Or Auto",
+      "formula": "Formula",
+      "unit": "Unit",
+      "isDeducTax": "Is Deduc Tax",
+      "isDeducInsurance": "Is Deduc Insurance",
+      "laborTime": "Labor Time",
+      "hokm": "Hokm",
+      "earnings": "Earnings",
+      "deduction": "Deduction",
+      "other": "Other",
+      "isEnabled": "Is Enabled",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "workItem": "Work Item",
+      "help": {
+        "title": "عنوان",
+        "manualOrAuto": "نحوه محاسبه دستی یا سیستمی",
+        "formula": "فرمول",
+        "unit": "واحد روزانه یا ساعتی",
+        "isDeducTax": "مشمول مالیات",
+        "isDeducInsurance": "مشمول بیمه",
+        "laborTime": "نوع سیستمی پارامتر\nعوامل کارکرد",
+        "hokm": "نوع سیستمی پارامتر\nعوامل حکمی",
+        "earnings": "نوع سیستمی پارامتر\nعوامل حقوق و مزایا",
+        "deduction": "نوع سیستمی پارامتر\nعوامل کسور",
+        "other": "نوع سیستمی پارامتر\nعوامل دیگر"
+      }
+    }
+  }
+}

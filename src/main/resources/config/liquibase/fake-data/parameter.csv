@@ -1,0 +1,11 @@
+id;title;manual_or_auto;formula;unit;is_deduc_tax;is_deduc_insurance;labor_time;hokm;earnings;deduction;other
+1;عکس العمل نشان دادن اِی وای تا حدودی;Constant;بلکه;Hourly;false;true;NOT_EFFECTIVE;Other;Shift;Lack_of_work_and_absence;Lack_of_work_and_absence
+2;بی‌بو می‌دانستن;Constant;آهان سریع مادر;Daily;true;false;Other;LABOR;Holiday_Work;Prepaid;Insurance_Labor
+3;حیوان دست سازماندهی کردن;BySystem;suddenly کفش تاریک;Hourly;false;true;SHIFT_15;FOOD;Total_Tax;Insurance_Labor;Judicial
+4;به نسبت;BySystem;majestically به‌روز;Hourly;false;true;LACK_OF_WORK_AND_ABSENT;EFFECTIVENESS;Total;LastMonthOverPaid;Other
+5;به طوری که;BySystem;تا صبح تاریک;Daily;false;false;HOLIDAY_WORK;TOTAL_HOKM;YEARS_OF_SERVICE;Supplementary_insurance;Prepaid
+6;fully;Constant;می‌خواستن;Daily;true;true;TOTAL_WORK_CURRENT_YEAR;CHILD;BONUS;Other;Total_Deduction
+7;انگلیسی وای اما;ByHand;هورا علاوه بر;Hourly;false;false;REMAIN_LEAVE_DAILY;BASE;Total_Insurance;Tax;LastMonthOverPaid
+8;با هم تا اصلی;ByHand;خواستن گم شدن فهمیدن;Hourly;true;true;MISSION_WORK;HOUSE;Mission;Total_Deduction;Loan
+9;رفتن ultimately سرگرم‌کننده;Constant;کند;Daily;true;true;REMAIN_LEAVE_HOURLY;RANGE;OtherEarning_Insurance;;
+10;truly;BySystem;یا ترجیح دادن اگرچه;Daily;false;true;TOTAL_WORK_DAY;;Other;Judicial;

@@ -1,0 +1,34 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceTransactionAccount": {
+      "home": {
+        "title": "Transaction Accounts",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Transaction Account ekle",
+        "createOrEditLabel": "Yeni Transaction Account ekle veya guncelle",
+        "search": "Transaction Account ara",
+        "notFound": "Transaction Accounts kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Transaction Account eklendi",
+      "updated": "{{ param }} nolu Transaction Account guncellendi",
+      "deleted": "{{ param }} nolu Transaction Account silindi",
+      "delete": {
+        "question": "{{ id }} nolu Transaction Account silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Transaction Account"
+      },
+      "id": "ID",
+      "debitAmount": "Debit Amount",
+      "creditAmount": "Credit Amount",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "account": "Account",
+      "transaction": "Transaction",
+      "help": {
+        "debitAmount": "مبلغ بدهکار",
+        "creditAmount": "مبلغ بستانکار"
+      }
+    }
+  }
+}

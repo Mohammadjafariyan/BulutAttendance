@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154307"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "واحد سازمانی\\n",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "OrgUnit",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "واحد سازمانی درختی\\n",
+      "otherEntityName": "orgUnit",
+      "relationshipName": "parent",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

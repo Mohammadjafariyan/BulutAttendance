@@ -1,0 +1,30 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccProcStep": {
+      "home": {
+        "title": "Acc Proc Steps",
+        "refreshListLabel": "Siyahını yenilə",
+        "createLabel": "Yeni Acc Proc Step əlavə et",
+        "createOrEditLabel": "Yeni Acc Proc Step əlavə et və ya yenilə",
+        "search": "Acc Proc Step axtar",
+        "notFound": "Acc Proc Steps məlumatı tapılmadı"
+      },
+      "created": "{{ param }} ID ilə bir Acc Proc Step əlavə edildi",
+      "updated": "{{ param }} nolu Acc Proc Step dəyişildi",
+      "deleted": "{{ param }} nolu Acc Proc Step silindi",
+      "delete": {
+        "question": "{{ id }} nolu Acc Proc Step silinəcək. Davam etmək istəyirsiniz?"
+      },
+      "detail": {
+        "title": "Acc Proc Step"
+      },
+      "id": "ID",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "creditAccount": "Credit Account",
+      "debitAccount": "Debit Account",
+      "parameter": "Parameter",
+      "procedure": "Procedure"
+    }
+  }
+}

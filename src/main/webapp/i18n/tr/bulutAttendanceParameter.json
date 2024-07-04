@@ -1,0 +1,51 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceParameter": {
+      "home": {
+        "title": "Parameters",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Parameter ekle",
+        "createOrEditLabel": "Yeni Parameter ekle veya guncelle",
+        "search": "Parameter ara",
+        "notFound": "Parameters kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Parameter eklendi",
+      "updated": "{{ param }} nolu Parameter guncellendi",
+      "deleted": "{{ param }} nolu Parameter silindi",
+      "delete": {
+        "question": "{{ id }} nolu Parameter silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Parameter"
+      },
+      "id": "ID",
+      "title": "Title",
+      "manualOrAuto": "Manual Or Auto",
+      "formula": "Formula",
+      "unit": "Unit",
+      "isDeducTax": "Is Deduc Tax",
+      "isDeducInsurance": "Is Deduc Insurance",
+      "laborTime": "Labor Time",
+      "hokm": "Hokm",
+      "earnings": "Earnings",
+      "deduction": "Deduction",
+      "other": "Other",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "title": "عنوان",
+        "manualOrAuto": "نحوه محاسبه دستی یا سیستمی",
+        "formula": "فرمول",
+        "unit": "واحد روزانه یا ساعتی",
+        "isDeducTax": "مشمول مالیات",
+        "isDeducInsurance": "مشمول بیمه",
+        "laborTime": "نوع سیستمی پارامتر\nعوامل کارکرد",
+        "hokm": "نوع سیستمی پارامتر\nعوامل حکمی",
+        "earnings": "نوع سیستمی پارامتر\nعوامل حقوق و مزایا",
+        "deduction": "نوع سیستمی پارامتر\nعوامل کسور",
+        "other": "نوع سیستمی پارامتر\nعوامل دیگر"
+      }
+    }
+  }
+}

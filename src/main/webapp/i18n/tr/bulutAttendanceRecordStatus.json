@@ -1,0 +1,27 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceRecordStatus": {
+      "home": {
+        "title": "Record Statuses",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Record Status ekle",
+        "createOrEditLabel": "Yeni Record Status ekle veya guncelle",
+        "search": "Record Status ara",
+        "notFound": "Record Statuses kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Record Status eklendi",
+      "updated": "{{ param }} nolu Record Status guncellendi",
+      "deleted": "{{ param }} nolu Record Status silindi",
+      "delete": {
+        "question": "{{ id }} nolu Record Status silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Record Status"
+      },
+      "fromDateTime": "From Date Time",
+      "toDateTime": "To Date Time",
+      "isDeleted": "Is Deleted",
+      "id": "Id"
+    }
+  }
+}

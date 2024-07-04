@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (orgUnit()) {
+      <div>
+        <h2 data-cy="orgUnitDetailsHeading"><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgUnit.detail.title">Org Unit</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgUnit.title">Title</span></dt>
+          <dd>
+            <span>{{ orgUnit()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgUnit.id">Id</span></dt>
+          <dd>
+            <span>{{ orgUnit()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgUnit.status">Status</span></dt>
+          <dd>
+            @if (orgUnit()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', orgUnit()!.status?.id, 'view']">{{ orgUnit()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgUnit.internalUser">Internal User</span></dt>
+          <dd>
+            @if (orgUnit()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', orgUnit()!.internalUser?.id, 'view']">{{
+                  orgUnit()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgUnit.company">Company</span></dt>
+          <dd>
+            @if (orgUnit()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', orgUnit()!.company?.id, 'view']">{{ orgUnit()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgUnit.parent">Parent</span></dt>
+          <dd>
+            @if (orgUnit()!.parent) {
+              <div>
+                <a [routerLink]="['/bulutattendance/org-unit', orgUnit()!.parent?.id, 'view']">{{ orgUnit()!.parent?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/org-unit', orgUnit()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,106 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154301"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "حکم پرسنلی\\nکلیه اطلاعات نحوه محاسبه حقوق پرسنل\\nشامل انتخاب کار ساعتی ، روزانه که قابلیت فعال و غیر فعال دارد",
+  "fields": [
+    {
+      "documentation": "عنوان حکم\\n",
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "شماره حکم\\n",
+      "fieldName": "uniqueNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "documentation": "تاریخ صدور\\n",
+      "fieldName": "issueDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "documentation": "تاریخ اجرا\\n",
+      "fieldName": "executionDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "bpmsApproveStatus",
+      "fieldType": "Integer"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "HrLetter",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "نوع حکم\\n",
+      "otherEntityName": "hrLetterType",
+      "relationshipName": "type",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "پرسنل انتخاب شده\\n",
+      "otherEntityName": "personnel",
+      "relationshipName": "personnelId",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "پست سازمانی\\n",
+      "otherEntityName": "orgPosition",
+      "relationshipName": "orgPosition",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "واحد سازمانی\\n",
+      "otherEntityName": "orgUnit",
+      "relationshipName": "orgUnit",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "جانباز و..",
+      "otherEntityName": "personnelStatus",
+      "relationshipName": "personnelStatus",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "عوامل حکمی\\n",
+      "otherEntityName": "hrLetterParameter",
+      "relationshipName": "hrLetterParameter",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

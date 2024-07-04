@@ -1,0 +1,29 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceWorkItem": {
+      "home": {
+        "title": "Work Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Work Item",
+        "createOrEditLabel": "Create or edit a Work Item",
+        "search": "Search for Work Item",
+        "notFound": "No Work Items found"
+      },
+      "created": "A new Work Item is created with identifier {{ param }}",
+      "updated": "A Work Item is updated with identifier {{ param }}",
+      "deleted": "A Work Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Work Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Work Item"
+      },
+      "id": "Id",
+      "amount": "Amount",
+      "hrLetterParameter": "Hr Letter Parameter",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "work": "Work"
+    }
+  }
+}

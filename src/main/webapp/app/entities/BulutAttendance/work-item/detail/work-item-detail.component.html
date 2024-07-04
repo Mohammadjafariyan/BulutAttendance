@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (workItem()) {
+      <div>
+        <h2 data-cy="workItemDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.detail.title">Work Item</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.id">Id</span></dt>
+          <dd>
+            <span>{{ workItem()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.amount">Amount</span></dt>
+          <dd>
+            <span>{{ workItem()!.amount }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.hrLetterParameter">Hr Letter Parameter</span></dt>
+          <dd>
+            @if (workItem()!.hrLetterParameter) {
+              <div>
+                <a [routerLink]="['/bulutattendance/hr-letter-parameter', workItem()!.hrLetterParameter?.id, 'view']">{{
+                  workItem()!.hrLetterParameter?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.internalUser">Internal User</span></dt>
+          <dd>
+            @if (workItem()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', workItem()!.internalUser?.id, 'view']">{{
+                  workItem()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.company">Company</span></dt>
+          <dd>
+            @if (workItem()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', workItem()!.company?.id, 'view']">{{ workItem()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.work">Work</span></dt>
+          <dd>
+            @if (workItem()!.work) {
+              <div>
+                <a [routerLink]="['/bulutattendance/work', workItem()!.work?.id, 'view']">{{ workItem()!.work?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/work-item', workItem()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

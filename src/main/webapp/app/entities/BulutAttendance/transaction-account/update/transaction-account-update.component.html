@@ -1,0 +1,155 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-transaction-account-heading"
+        data-cy="TransactionAccountCreateUpdateHeading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.home.createOrEditLabel"
+      >
+        Create or edit a Transaction Account
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_debitAmount"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceTransactionAccount.help.debitAmount' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.debitAmount"
+            >Debit Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="debitAmount"
+            id="field_debitAmount"
+            data-cy="debitAmount"
+            formControlName="debitAmount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_creditAmount"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceTransactionAccount.help.creditAmount' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.creditAmount"
+            >Credit Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="creditAmount"
+            id="field_creditAmount"
+            data-cy="creditAmount"
+            formControlName="creditAmount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_internalUser"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.internalUser"
+            >Internal User</label
+          >
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (applicationUserOption of applicationUsersSharedCollection; track $index) {
+              <option [ngValue]="applicationUserOption">{{ applicationUserOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_company" jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.company"
+            >Company</label
+          >
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            @for (companyOption of companiesSharedCollection; track $index) {
+              <option [ngValue]="companyOption">{{ companyOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_account" jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.account"
+            >Account</label
+          >
+          <select
+            class="form-control"
+            id="field_account"
+            data-cy="account"
+            name="account"
+            formControlName="account"
+            [compareWith]="compareAccountHesab"
+          >
+            <option [ngValue]="null"></option>
+            @for (accountHesabOption of accountHesabsSharedCollection; track $index) {
+              <option [ngValue]="accountHesabOption">{{ accountHesabOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_transaction" jhiTranslate="bulutAttendanceApp.bulutAttendanceTransactionAccount.transaction"
+            >Transaction</label
+          >
+          <select
+            class="form-control"
+            id="field_transaction"
+            data-cy="transaction"
+            name="transaction"
+            formControlName="transaction"
+            [compareWith]="compareTransaction"
+          >
+            <option [ngValue]="null"></option>
+            @for (transactionOption of transactionsSharedCollection; track $index) {
+              <option [ngValue]="transactionOption">{{ transactionOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">ذخیره</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

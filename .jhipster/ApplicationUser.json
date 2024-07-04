@@ -1,0 +1,19 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154258"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "ApplicationUser",
+  "relationships": [],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,28 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceOrgPosition": {
+      "home": {
+        "title": "Org Positions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Org Position",
+        "createOrEditLabel": "Create or edit a Org Position",
+        "search": "Search for Org Position",
+        "notFound": "No Org Positions found"
+      },
+      "created": "A new Org Position is created with identifier {{ param }}",
+      "updated": "A Org Position is updated with identifier {{ param }}",
+      "deleted": "A Org Position is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Org Position {{ id }}?"
+      },
+      "detail": {
+        "title": "Org Position"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

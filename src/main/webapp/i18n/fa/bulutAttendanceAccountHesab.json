@@ -1,0 +1,50 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccountHesab": {
+      "home": {
+        "title": "Account Hesabs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Account Hesab",
+        "createOrEditLabel": "Create or edit a Account Hesab",
+        "search": "Search for Account Hesab",
+        "notFound": "No Account Hesabs found"
+      },
+      "created": "A new Account Hesab is created with identifier {{ param }}",
+      "updated": "A Account Hesab is updated with identifier {{ param }}",
+      "deleted": "A Account Hesab is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Account Hesab {{ id }}?"
+      },
+      "detail": {
+        "title": "Account Hesab"
+      },
+      "title": "Title",
+      "code": "Code",
+      "level": "Level",
+      "levelTitle": "Level Title",
+      "id": "Id",
+      "type": "Type",
+      "levelInTree": "Level In Tree",
+      "debitAmount": "Debit Amount",
+      "creditAmount": "Credit Amount",
+      "typeInFormula": "Type In Formula",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "parentAccountId": "Parent Account Id",
+      "personnelId": "Personnel Id",
+      "bank": "Bank",
+      "help": {
+        "title": "نام حساب",
+        "code": "کد حساب",
+        "level": "سطح حساب",
+        "levelTitle": "عنوان سطح حساب",
+        "type": "ماهیت حساب : بدهکار یا بستانکار",
+        "levelInTree": "سطح حساب داری : کل ، معین ، تفظیل",
+        "debitAmount": "مانده بدهکار",
+        "creditAmount": "مانده بستانکار",
+        "typeInFormula": "تاثیر در فرمول معادله حسابداری"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (taxTemplate()) {
+      <div>
+        <h2 data-cy="taxTemplateDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.detail.title">Tax Template</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.rangeFrom">Range From</span></dt>
+          <dd>
+            <span>{{ taxTemplate()!.rangeFrom }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.rangeTo">Range To</span></dt>
+          <dd>
+            <span>{{ taxTemplate()!.rangeTo }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.percent">Percent</span></dt>
+          <dd>
+            <span>{{ taxTemplate()!.percent }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.year">Year</span></dt>
+          <dd>
+            <span>{{ taxTemplate()!.year }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.id">Id</span></dt>
+          <dd>
+            <span>{{ taxTemplate()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.status">Status</span></dt>
+          <dd>
+            @if (taxTemplate()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', taxTemplate()!.status?.id, 'view']">{{ taxTemplate()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.internalUser">Internal User</span></dt>
+          <dd>
+            @if (taxTemplate()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', taxTemplate()!.internalUser?.id, 'view']">{{
+                  taxTemplate()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTaxTemplate.company">Company</span></dt>
+          <dd>
+            @if (taxTemplate()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', taxTemplate()!.company?.id, 'view']">{{ taxTemplate()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/tax-template', taxTemplate()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,31 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceLeave": {
+      "home": {
+        "title": "Leaves",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Leave",
+        "createOrEditLabel": "Create or edit a Leave",
+        "search": "Search for Leave",
+        "notFound": "No Leaves found"
+      },
+      "created": "A new Leave is created with identifier {{ param }}",
+      "updated": "A Leave is updated with identifier {{ param }}",
+      "deleted": "A Leave is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Leave {{ id }}?"
+      },
+      "detail": {
+        "title": "Leave"
+      },
+      "start": "Start",
+      "end": "End",
+      "id": "Id",
+      "bpmsApproveStatus": "Bpms Approve Status",
+      "status": "Status",
+      "personnelId": "Personnel Id",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

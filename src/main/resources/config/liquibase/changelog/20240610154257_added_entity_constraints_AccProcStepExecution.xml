@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity AccProcStepExecution.
+    -->
+    <changeSet id="20240610154257-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="internal_user_id"
+                                 baseTableName="acc_proc_step_execution"
+                                 constraintName="fk_acc_proc_step_execution__internal_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="application_user"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="acc_proc_step_execution"
+                                 constraintName="fk_acc_proc_step_execution__company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="credit_account_id"
+                                 baseTableName="acc_proc_step_execution"
+                                 constraintName="fk_acc_proc_step_execution__credit_account_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="account_hesab"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="debit_account_id"
+                                 baseTableName="acc_proc_step_execution"
+                                 constraintName="fk_acc_proc_step_execution__debit_account_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="account_hesab"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="procedure_id"
+                                 baseTableName="acc_proc_step_execution"
+                                 constraintName="fk_acc_proc_step_execution__procedure_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="accounting_procedure_execution"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="step_id"
+                                 baseTableName="acc_proc_step_execution"
+                                 constraintName="fk_acc_proc_step_execution__step_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="acc_proc_step"
+                                 />
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154316"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "تمامی مقادیر شامل کارکرد و\\nآنچه در حکم تعریف شده در این جدول مقدار دهی می شود\\nو حقوق پرسنل و مزایا و کسورات و کارکرد ثبت می شود",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "documentation": "تاریخ ثبت\\n",
+      "fieldName": "issueDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "documentation": "توضیحات\\n",
+      "fieldName": "desc",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "برای مثال این فیش یا اطلاعات ثبتی مربوط به کدام سال است\\n",
+      "fieldName": "year",
+      "fieldType": "Integer"
+    },
+    {
+      "documentation": "مربوط به کدام ماه است\\n",
+      "fieldName": "month",
+      "fieldType": "Integer"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "Work",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

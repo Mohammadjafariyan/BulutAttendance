@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (orgPosition()) {
+      <div>
+        <h2 data-cy="orgPositionDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgPosition.detail.title">Org Position</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgPosition.title">Title</span></dt>
+          <dd>
+            <span>{{ orgPosition()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgPosition.id">Id</span></dt>
+          <dd>
+            <span>{{ orgPosition()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgPosition.status">Status</span></dt>
+          <dd>
+            @if (orgPosition()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', orgPosition()!.status?.id, 'view']">{{ orgPosition()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgPosition.internalUser">Internal User</span></dt>
+          <dd>
+            @if (orgPosition()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', orgPosition()!.internalUser?.id, 'view']">{{
+                  orgPosition()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceOrgPosition.company">Company</span></dt>
+          <dd>
+            @if (orgPosition()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', orgPosition()!.company?.id, 'view']">{{ orgPosition()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/org-position', orgPosition()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

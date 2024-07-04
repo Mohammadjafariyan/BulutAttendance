@@ -1,0 +1,44 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceHrLetter": {
+      "home": {
+        "title": "Hr Letters",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Hr Letter ekle",
+        "createOrEditLabel": "Yeni Hr Letter ekle veya guncelle",
+        "search": "Hr Letter ara",
+        "notFound": "Hr Letters kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Hr Letter eklendi",
+      "updated": "{{ param }} nolu Hr Letter guncellendi",
+      "deleted": "{{ param }} nolu Hr Letter silindi",
+      "delete": {
+        "question": "{{ id }} nolu Hr Letter silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Hr Letter"
+      },
+      "title": "Title",
+      "uniqueNumber": "Unique Number",
+      "id": "Id",
+      "issueDate": "Issue Date",
+      "executionDate": "Execution Date",
+      "bpmsApproveStatus": "Bpms Approve Status",
+      "status": "Status",
+      "type": "Type",
+      "personnelId": "Personnel Id",
+      "orgPosition": "Org Position",
+      "orgUnit": "Org Unit",
+      "personnelStatus": "Personnel Status",
+      "hrLetterParameter": "Hr Letter Parameter",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "help": {
+        "title": "عنوان حکم\n",
+        "uniqueNumber": "شماره حکم\n",
+        "issueDate": "تاریخ صدور\n",
+        "executionDate": "تاریخ اجرا\n"
+      }
+    }
+  }
+}

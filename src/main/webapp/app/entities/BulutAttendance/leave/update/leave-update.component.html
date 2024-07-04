@@ -1,0 +1,156 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-leave-heading"
+        data-cy="LeaveCreateUpdateHeading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.home.createOrEditLabel"
+      >
+        Create or edit a Leave
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_start" jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.start">Start</label>
+          <div class="d-flex">
+            <input
+              id="field_start"
+              data-cy="start"
+              type="datetime-local"
+              class="form-control"
+              name="start"
+              formControlName="start"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_end" jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.end">End</label>
+          <div class="d-flex">
+            <input
+              id="field_end"
+              data-cy="end"
+              type="datetime-local"
+              class="form-control"
+              name="end"
+              formControlName="end"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_bpmsApproveStatus" jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.bpmsApproveStatus"
+            >Bpms Approve Status</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="bpmsApproveStatus"
+            id="field_bpmsApproveStatus"
+            data-cy="bpmsApproveStatus"
+            formControlName="bpmsApproveStatus"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.status">Status</label>
+          <select
+            class="form-control"
+            id="field_status"
+            data-cy="status"
+            name="status"
+            formControlName="status"
+            [compareWith]="compareRecordStatus"
+          >
+            <option [ngValue]="null"></option>
+            @for (recordStatusOption of recordStatusesSharedCollection; track $index) {
+              <option [ngValue]="recordStatusOption">{{ recordStatusOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_personnelId" jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.personnelId"
+            >Personnel Id</label
+          >
+          <select
+            class="form-control"
+            id="field_personnelId"
+            data-cy="personnelId"
+            name="personnelId"
+            formControlName="personnelId"
+            [compareWith]="comparePersonnel"
+          >
+            <option [ngValue]="null"></option>
+            @for (personnelOption of personnelSharedCollection; track $index) {
+              <option [ngValue]="personnelOption">{{ personnelOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_internalUser" jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.internalUser"
+            >Internal User</label
+          >
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (applicationUserOption of applicationUsersSharedCollection; track $index) {
+              <option [ngValue]="applicationUserOption">{{ applicationUserOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_company" jhiTranslate="bulutAttendanceApp.bulutAttendanceLeave.company">Company</label>
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            @for (companyOption of companiesSharedCollection; track $index) {
+              <option [ngValue]="companyOption">{{ companyOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">ذخیره</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (personnel()) {
+      <div>
+        <h2 data-cy="personnelDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.detail.title">Personnel</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.firstName">First Name</span></dt>
+          <dd>
+            <span>{{ personnel()!.firstName }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.lastName">Last Name</span></dt>
+          <dd>
+            <span>{{ personnel()!.lastName }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.requitmentDate">Requitment Date</span></dt>
+          <dd>
+            <span>{{ personnel()!.requitmentDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.father">Father</span></dt>
+          <dd>
+            <span>{{ personnel()!.father }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.shenasname">Shenasname</span></dt>
+          <dd>
+            <span>{{ personnel()!.shenasname }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.mahalesodur">Mahalesodur</span></dt>
+          <dd>
+            <span>{{ personnel()!.mahalesodur }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.birthday">Birthday</span></dt>
+          <dd>
+            <span>{{ personnel()!.birthday }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.isSingle">Is Single</span></dt>
+          <dd>
+            <span>{{ personnel()!.isSingle }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.lastEducation">Last Education</span></dt>
+          <dd>
+            <span>{{ personnel()!.lastEducation }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.educationField">Education Field</span></dt>
+          <dd>
+            <span>{{ personnel()!.educationField }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.children">Children</span></dt>
+          <dd>
+            <span>{{ personnel()!.children }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.id">Id</span></dt>
+          <dd>
+            <span>{{ personnel()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.status">Status</span></dt>
+          <dd>
+            @if (personnel()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', personnel()!.status?.id, 'view']">{{ personnel()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.internalUser">Internal User</span></dt>
+          <dd>
+            @if (personnel()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', personnel()!.internalUser?.id, 'view']">{{
+                  personnel()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnel.company">Company</span></dt>
+          <dd>
+            @if (personnel()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', personnel()!.company?.id, 'view']">{{ personnel()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/personnel', personnel()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

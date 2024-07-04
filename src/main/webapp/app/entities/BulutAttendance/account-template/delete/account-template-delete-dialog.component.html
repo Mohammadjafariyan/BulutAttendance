@@ -1,0 +1,28 @@
+@if (accountTemplate) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(accountTemplate.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="accountTemplateDeleteDialogHeading" jhiTranslate="entity.delete.title">تصدیق عملیات حذف</h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        id="jhi-delete-accountTemplate-heading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.delete.question"
+        [translateValues]="{ id: accountTemplate.id }"
+      >
+        Are you sure you want to delete Account Template {{ accountTemplate.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+      </button>
+
+      <button id="jhi-confirm-delete-accountTemplate" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">حذف</span>
+      </button>
+    </div>
+  </form>
+}

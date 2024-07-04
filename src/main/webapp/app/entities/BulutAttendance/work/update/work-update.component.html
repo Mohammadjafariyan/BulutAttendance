@@ -1,0 +1,130 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-work-heading"
+        data-cy="WorkCreateUpdateHeading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.home.createOrEditLabel"
+      >
+        Create or edit a Work
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_issueDate"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceWork.help.issueDate' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.issueDate"
+            >Issue Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_issueDate"
+              data-cy="issueDate"
+              type="datetime-local"
+              class="form-control"
+              name="issueDate"
+              formControlName="issueDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_desc"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceWork.help.desc' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.desc"
+            >Desc</label
+          >
+          <input type="text" class="form-control" name="desc" id="field_desc" data-cy="desc" formControlName="desc" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_year"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceWork.help.year' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.year"
+            >Year</label
+          >
+          <input type="number" class="form-control" name="year" id="field_year" data-cy="year" formControlName="year" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_month"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceWork.help.month' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.month"
+            >Month</label
+          >
+          <input type="number" class="form-control" name="month" id="field_month" data-cy="month" formControlName="month" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_internalUser" jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.internalUser"
+            >Internal User</label
+          >
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (applicationUserOption of applicationUsersSharedCollection; track $index) {
+              <option [ngValue]="applicationUserOption">{{ applicationUserOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_company" jhiTranslate="bulutAttendanceApp.bulutAttendanceWork.company">Company</label>
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            @for (companyOption of companiesSharedCollection; track $index) {
+              <option [ngValue]="companyOption">{{ companyOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">ذخیره</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

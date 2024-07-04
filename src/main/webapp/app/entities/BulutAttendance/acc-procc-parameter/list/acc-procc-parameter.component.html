@@ -1,0 +1,361 @@
+<div>
+  <h2 id="page-heading" data-cy="AccProccParameterHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.home.title">Acc Procc Parameters</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-acc-procc-parameter"
+        [routerLink]="['/bulutattendance/acc-procc-parameter/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.home.createLabel"
+          >Create a new Acc Procc Parameter</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.home.search"
+          >Search for Acc Procc Parameter</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendanceAccProccParameter.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (accProccParameters?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.home.notFound">No Acc Procc Parameters found</span>
+    </div>
+  }
+
+  @if (accProccParameters && accProccParameters.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">شناسه</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.title">Title</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="manualOrAuto">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.manualOrAuto">Manual Or Auto</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="formula">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.formula">Formula</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="unit">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.unit">Unit</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isDeducTax">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.isDeducTax">Is Deduc Tax</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isDeducInsurance">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.isDeducInsurance">Is Deduc Insurance</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="laborTime">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.laborTime">Labor Time</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hokm">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.hokm">Hokm</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="earnings">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.earnings">Earnings</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="deduction">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.deduction">Deduction</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="other">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.other">Other</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProccParameter.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (accProccParameter of accProccParameters; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/bulutattendance/acc-procc-parameter', accProccParameter.id, 'view']">{{ accProccParameter.id }}</a>
+              </td>
+              <td>{{ accProccParameter.title }}</td>
+              <td [jhiTranslate]="'bulutAttendanceApp.CalcType.' + (accProccParameter.manualOrAuto ?? 'null')">
+                {{ { null: '', ByHand: 'ByHand', BySystem: 'BySystem', Constant: 'Constant' }[accProccParameter.manualOrAuto ?? 'null'] }}
+              </td>
+              <td>{{ accProccParameter.formula }}</td>
+              <td [jhiTranslate]="'bulutAttendanceApp.CalcUnit.' + (accProccParameter.unit ?? 'null')">
+                {{ { null: '', Daily: 'Daily', Hourly: 'Hourly' }[accProccParameter.unit ?? 'null'] }}
+              </td>
+              <td>{{ accProccParameter.isDeducTax }}</td>
+              <td>{{ accProccParameter.isDeducInsurance }}</td>
+              <td [jhiTranslate]="'bulutAttendanceApp.LaborTime.' + (accProccParameter.laborTime ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    STANDARD: 'کارکرد موظف (استاندارد',
+                    EFFECTIVE: 'کارکرد موثر',
+                    LACK_OF_WORK_AND_ABSENT: 'کسری کار و غیبت',
+                    OVERTIME: 'اضافه کاری',
+                    NOT_EFFECTIVE: 'کارکرد غیر موثر',
+                    SHIFT_10: 'نوبت کاری 10 درصد',
+                    SHIFT_15: 'نوبت کاری 15 درصد',
+                    SHIFT_22_5: 'نوبت کاری 22.5 درصد',
+                    NIGHT_WORK: 'شب کاری',
+                    MISSION_WORK: 'ماموریت',
+                    HOLIDAY_WORK: 'تعطیل کاری',
+                    TOTAL_WORK_DAY: 'مدت اشتغال کل ( روز',
+                    TOTAL_WORK_CURRENT_YEAR: 'کارکرد سال جاری ( روز ',
+                    REMAIN_LEAVE_HOURLY: 'باقی مانده مرخصی (ساعت',
+                    REMAIN_LEAVE_DAILY: 'باقی مانده مرخصی (روز',
+                    Other: 'سایر',
+                    SANAVAT: 'سنوات پایان خدمت',
+                    TOTAL_WORK: 'کل کارکرد'
+                  }[accProccParameter.laborTime ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.Hokm.' + (accProccParameter.hokm ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Other: 'سایر',
+                    BASE: 'حقوق پایه',
+                    CHILD: 'حق اولاد',
+                    LABOR: 'بن کارگری',
+                    FOOD: 'بن خواربار',
+                    RANGE: 'مزد رتبه',
+                    ROLE: 'مزایای پست',
+                    EFFECTIVENESS: 'فوق العاده کارایی',
+                    HOUSE: 'حق مسکن',
+                    TOTAL_HOKM: 'جمع حکم'
+                  }[accProccParameter.hokm ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.Earning.' + (accProccParameter.earnings ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Other: 'سایر',
+                    OverTime: 'اضافه کار',
+                    Shift: 'فوق العاده نوبت کاری',
+                    Night: 'فوق العاده شب کاری',
+                    Holiday_Work: 'فوق العاده تعطیل کاری',
+                    Mission: 'حق ماموریت',
+                    Tax_Insurance: 'سایر پرداختنی های مشمول بیمه و مالیات',
+                    OtherEarning_Tax: 'سایر پرداختنی های مشمول مالیات',
+                    OtherEarning_Insurance: 'سایر پرداختنی های مشمول بیمه',
+                    Total: 'جمع حقوق و مزایا',
+                    Total_Insurance: 'جمع حقوق و مزایای مشمول بیمه',
+                    Net_Salary_Paid: 'خالص پرداختی حقوق',
+                    Total_Tax: 'جمع حقوق و مزایای مشمول مالیات',
+                    LEAVE: 'بازخرید مرخصی ',
+                    YEARLY_BONUS: 'عیدی',
+                    YEARS_OF_SERVICE: 'سنوات خدمت',
+                    BONUS: 'پاداش'
+                  }[accProccParameter.earnings ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.Deduction.' + (accProccParameter.deduction ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Other: 'سایر',
+                    Insurance_Labor: 'سهم بیمه کارگر 7 درصد',
+                    Tax: 'مالیات',
+                    Judicial: 'کسور قضایی',
+                    Prepaid: 'مساعده',
+                    Loan: 'اقساط وام',
+                    LastMonthOverPaid: 'اضافه پرداخت ماه قبل',
+                    Lack_of_work_and_absence: 'کسری کار و غیبت',
+                    Supplementary_insurance: 'بیمه تکمیلی',
+                    Total_Deduction: 'جمع کسور'
+                  }[accProccParameter.deduction ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.Deduction.' + (accProccParameter.other ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Other: 'سایر',
+                    Insurance_Labor: 'سهم بیمه کارگر 7 درصد',
+                    Tax: 'مالیات',
+                    Judicial: 'کسور قضایی',
+                    Prepaid: 'مساعده',
+                    Loan: 'اقساط وام',
+                    LastMonthOverPaid: 'اضافه پرداخت ماه قبل',
+                    Lack_of_work_and_absence: 'کسری کار و غیبت',
+                    Supplementary_insurance: 'بیمه تکمیلی',
+                    Total_Deduction: 'جمع کسور'
+                  }[accProccParameter.other ?? 'null']
+                }}
+              </td>
+              <td>
+                @if (accProccParameter.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', accProccParameter.internalUser.id, 'view']">{{
+                      accProccParameter.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (accProccParameter.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', accProccParameter.company.id, 'view']">{{
+                      accProccParameter.company.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/acc-procc-parameter', accProccParameter.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/acc-procc-parameter', accProccParameter.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(accProccParameter)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (accProccParameters && accProccParameters.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

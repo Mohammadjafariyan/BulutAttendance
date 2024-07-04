@@ -1,0 +1,11 @@
+id;title;manual_or_auto;formula;unit;is_deduc_tax;is_deduc_insurance;labor_time;hokm;earnings;deduction;other;is_enabled
+1;توجه داشتن;ByHand;دندانپزشک;Daily;true;true;TOTAL_WORK_CURRENT_YEAR;HOUSE;YEARS_OF_SERVICE;Judicial;LastMonthOverPaid;false
+2;سریع یاالله پایین;Constant;همچنین خورشید وایسا;Daily;false;true;LACK_OF_WORK_AND_ABSENT;HOUSE;LEAVE;Tax;Total_Deduction;false
+3;easily;ByHand;upliftingly چون;Hourly;true;false;NOT_EFFECTIVE;EFFECTIVENESS;Total_Insurance;Insurance_Labor;Judicial;false
+4;مجله frightfully اوف;ByHand;درخواست کردن;Hourly;true;false;SHIFT_22_5;Other;LEAVE;Prepaid;Insurance_Labor;false
+5;loftily;BySystem;پایین;Daily;true;false;HOLIDAY_WORK;TOTAL_HOKM;Total;Total_Deduction;Insurance_Labor;false
+6;هر چند برخلاف کوتاه;ByHand;mockingly شامپو موسیقی;Daily;false;false;REMAIN_LEAVE_HOURLY;RANGE;Night;Insurance_Labor;Insurance_Labor;true
+7;جواب دادن;BySystem;exactly;Hourly;true;false;SANAVAT;FOOD;Other;Total_Deduction;Insurance_Labor;false
+8;بارانی اطمینان داشتن;Constant;اما;Hourly;true;true;STANDARD;LABOR;Other;Prepaid;Total_Deduction;true
+9;پایین adventurously غمگین;Constant;نزد arrogantly در مقابل;Hourly;false;false;MISSION_WORK;Other;YEARLY_BONUS;Loan;Insurance_Labor;false
+10;تا حد امکان اما;ByHand;واو;Hourly;false;false;SHIFT_15;CHILD;Holiday_Work;Insurance_Labor;Loan;true

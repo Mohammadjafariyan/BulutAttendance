@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (hrLetterType()) {
+      <div>
+        <h2 data-cy="hrLetterTypeDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.detail.title">Hr Letter Type</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.title">Title</span></dt>
+          <dd>
+            <span>{{ hrLetterType()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.id">Id</span></dt>
+          <dd>
+            <span>{{ hrLetterType()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.status">Status</span></dt>
+          <dd>
+            @if (hrLetterType()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', hrLetterType()!.status?.id, 'view']">{{
+                  hrLetterType()!.status?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.internalUser">Internal User</span></dt>
+          <dd>
+            @if (hrLetterType()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', hrLetterType()!.internalUser?.id, 'view']">{{
+                  hrLetterType()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterType.company">Company</span></dt>
+          <dd>
+            @if (hrLetterType()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', hrLetterType()!.company?.id, 'view']">{{ hrLetterType()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/hr-letter-type', hrLetterType()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

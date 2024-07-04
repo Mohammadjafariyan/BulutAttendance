@@ -1,0 +1,33 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccProcStepExecution": {
+      "home": {
+        "title": "Acc Proc Step Executions",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Acc Proc Step Execution ekle",
+        "createOrEditLabel": "Yeni Acc Proc Step Execution ekle veya guncelle",
+        "search": "Acc Proc Step Execution ara",
+        "notFound": "Acc Proc Step Executions kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Acc Proc Step Execution eklendi",
+      "updated": "{{ param }} nolu Acc Proc Step Execution guncellendi",
+      "deleted": "{{ param }} nolu Acc Proc Step Execution silindi",
+      "delete": {
+        "question": "{{ id }} nolu Acc Proc Step Execution silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Acc Proc Step Execution"
+      },
+      "id": "ID",
+      "debitAmount": "Debit Amount",
+      "creditAmount": "Credit Amount",
+      "desc": "Desc",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "creditAccount": "Credit Account",
+      "debitAccount": "Debit Account",
+      "procedure": "Procedure",
+      "step": "Step"
+    }
+  }
+}

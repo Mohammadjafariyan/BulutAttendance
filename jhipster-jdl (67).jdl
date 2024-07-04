@@ -1,0 +1,1042 @@
+
+entity ApplicationUser {
+  userId String
+}
+
+
+
+entity AccountHesab {
+/**
+   * نام حساب
+   */
+  title String
+  /**
+   * کد حساب
+   */
+  code String
+  /**
+   * سطح حساب
+   */
+  level Integer
+    /**
+   * عنوان سطح حساب
+   */
+  levelTitle String
+  id UUID
+    /**
+   * ماهیت حساب : بدهکار یا بستانکار
+   */
+  type AccountType
+    /**
+   * سطح حساب داری : کل ، معین ، تفظیل
+   */
+  levelInTree AccountLevelInTree
+    /**
+   * مانده بدهکار
+   */
+  debitAmount BigDecimal
+    /**
+   * مانده بستانکار
+   */
+  creditAmount BigDecimal
+    /**
+   * تاثیر در فرمول معادله حسابداری
+   */
+  typeInFormula AccountingFormulaType
+}
+
+entity Bank {
+  /**
+   * عنوان
+   */
+  title String
+    /**
+   * کد
+   */
+  code String
+  id UUID
+}
+  /**
+   * حساب هایی که مال سیستم هستند و موقع ثبت شرکت به حساب های شرکت
+   * کپی می شوند
+   */
+entity AccountTemplate {
+/**
+   * نام حساب
+   */
+  title String
+  /**
+   * کد حساب
+   */
+  code String
+  /**
+   * سطح حساب
+   */
+  level Integer
+    /**
+   * عنوان سطح حساب
+   */
+  levelTitle String
+  id UUID
+    /**
+   * ماهیت حساب : بدهکار یا بستانکار
+   */
+  type AccountType
+    /**
+   * سطح حساب داری : کل ، معین ، تفظیل
+   */
+  levelInTree AccountLevelInTree
+    /**
+   * مانده بدهکار
+   */
+  debitAmount BigDecimal
+    /**
+   * مانده بستانکار
+   */
+  creditAmount BigDecimal
+    /**
+   * تاثیر در فرمول معادله حسابداری
+   */
+  typeInFormula AccountingFormulaType
+}
+
+enum AccountType {
+  /**
+   * بستانکار
+   */
+ Credit ,
+   /**
+   * بدهکار
+   */
+   Debit
+}
+
+enum AccountLevelInTree {
+/**
+   * گروه حساب
+   */
+GROUP,
+/**
+   * حساب کل
+   */
+   KOL ,
+   /**
+   * حساب معین
+   */
+   MOAYAN ,
+   /**
+   * تفضیل
+   */
+   TAFZIL,
+      /**
+   * تفضیل 
+   * سطح 2
+   */
+TAFZIL_2,
+      /**
+   * تفضیل 
+   * سطح 3
+   */
+TAFZIL_3,
+      /**
+   * تفضیل 
+   * سطح 4
+   */
+TAFZIL_4,
+      /**
+   * تفضیل 
+   * سطح 5
+   */
+TAFZIL_5,
+      /**
+   * تفضیل 
+   * سطح 6
+   */
+TAFZIL_6,
+      /**
+   * تفضیل 
+   * سطح 7
+   */
+TAFZIL_7,
+      /**
+   * تفضیل 
+   * سطح 8
+   */
+TAFZIL_8,
+      /**
+   * تفضیل 
+   * سطح 9
+   */
+TAFZIL_9,
+      /**
+   * تفضیل 
+   * سطح 10
+   */
+TAFZIL_10
+}
+
+enum AccountingFormulaType {
+      /**
+   * دارایی 
+   */
+    ASSETS , 
+       /**
+   * هزینه 
+   */
+   EXPENSES ,
+      /**
+   * سود 
+   */
+   DIVIDENDS ,
+      /**
+   * بدهی ها 
+   */
+ LIABILITIES ,
+    /**
+   * حقوق صاحبان سهام  
+   */
+   OWNERS_EQUITY ,
+      /**
+   * درآمد 
+   */
+   REVENUE
+}
+
+
+  /**
+   * تراکنش های هر حساب
+   */
+entity TransactionAccount {
+  /**
+   * مبلغ بدهکار
+   */
+ debitAmount BigDecimal
+   /**
+   * مبلغ بستانکار
+   */
+ creditAmount BigDecimal
+}
+
+  /**
+   * سند
+   */
+entity Transaction {
+  /**
+   * تاریخ
+   */
+ issueDateTime ZonedDateTime
+   /**
+   * مبلغ کل
+   */
+ totalAmount BigDecimal
+   /**
+   * توضیحات
+   */
+ desc String
+   /**
+   * شماره سند
+   */
+ docNumber String
+}
+
+// -------------------------------
+
+
+// -----------------procedure
+  /**
+   * عملیات حسابداری
+   */
+entity AccountingProcedure {
+
+  /**
+   * عنوان
+   */
+	title String
+}
+
+  /**
+   * هر مرحله از عملیات حسابداری
+   */
+entity AccProcStep {
+
+}
+
+  /**
+   * پارامتر هر مرحله از عملیات حسابداری
+   */
+entity AccProccParameter {
+  /**
+   * عنوان
+   */
+   	title String
+      /**
+   * نحوه محاسبه دستی یا سیستمی
+   */
+	manualOrAuto CalcType
+      /**
+   * فرمول
+   */
+    formula String
+      /**
+   * واحد روزانه یا ساعتی
+   */
+	unit CalcUnit
+      /**
+   * مشمول مالیات
+   */
+    isDeducTax Boolean
+      /**
+   * مشمول بیمه
+   */
+    isDeducInsurance Boolean
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل کارکرد
+   */
+    laborTime LaborTime
+  /**
+   * نوع سیستمی پارامتر
+   * عوامل حکمی
+   */
+    hokm Hokm
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل حقوق و مزایا
+   */
+    earnings Earning
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل کسور
+   */
+    deduction Deduction
+
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل دیگر
+   */
+    other Deduction
+}
+
+  /**
+   * ثبت لاگ اجرای عملیات حسابداری
+   *
+   */
+entity AccountingProcedureExecution {
+  /**
+   * تاریخ اجرا
+   *
+   */
+	dateTime ZonedDateTime
+      /**
+   * توضیحات
+   *
+   */
+    desc String
+
+}
+
+  /**
+   * لاگ اجرای عملیات حسابداری
+   *
+   */
+entity AccProcStepExecution {
+	debitAmount BigDecimal
+	creditAmount BigDecimal
+    desc String
+}
+// -----------------procedure end
+// -----------------work
+  /**
+   * تمامی مقادیر شامل کارکرد و
+   * آنچه در حکم تعریف شده در این جدول مقدار دهی می شود
+   * و حقوق پرسنل و مزایا و کسورات و کارکرد ثبت می شود
+   */
+entity Work {
+    id UUID
+      /**
+   * تاریخ ثبت
+   *
+   */
+	issueDate ZonedDateTime
+      /**
+   * توضیحات
+   *
+   */
+    desc String
+      /**
+   * برای مثال این فیش یا اطلاعات ثبتی مربوط به کدام سال است
+   *
+   */
+    year Integer
+      /**
+   * مربوط به کدام ماه است
+   *
+   */
+    month Integer
+}
+
+  /**
+   * جزئیات مقدار هر عامل حکمی در این جدول ثبت مشود
+   * شامل کارکرد ، حقوق مزایا ، کسورات ، بیمه و غیره
+   */
+entity WorkItem {
+    id UUID
+	amount BigDecimal
+}
+// -----------------work end
+
+
+entity Personnel {
+	firstName String
+    lastName String
+    requitmentDate String
+    father String
+    shenasname String
+    mahalesodur String
+    birthday String
+    isSingle String
+    lastEducation String
+    educationField String
+    children Integer min(42) max(42)
+    id UUID
+
+}
+
+  /**
+   * جانباز ، عادی
+   * کارورز ، سهامدار و...
+   */
+entity PersonnelStatus {
+	title String
+        id UUID
+}
+entity OrgPosition {
+	title String
+        id UUID
+}
+
+  /**
+   * تنظیمات هر ساله مالیات که
+   * هر ساله توسط دولت مشخص می شود
+   */
+entity TaxTemplate {
+	rangeFrom BigDecimal
+    rangeTo BigDecimal
+    percent Integer
+    year Integer
+        id UUID
+}
+
+  /**
+   * برخی تنظیمات کلی سیستم بصورت سالانه
+   * شامل فرمول محاسبه مالیات و بیمه
+   */
+entity SysConfig {
+	taxFormula String
+    sanavatFormula String
+    year Integer
+        id UUID
+}
+
+  /**
+   * مرخصی
+   *
+   */
+entity Leave {
+	start ZonedDateTime
+	end ZonedDateTime
+    id UUID
+    bpmsApproveStatus Integer
+}
+
+  /**
+   * مانده مرخصی پرسنل
+   *
+   */
+entity LeaveSummary {
+	remainHours Integer
+    remainDays Integer
+    year Integer
+    id UUID
+}
+
+  /**
+   * نوع حکم پرسنلی
+   *
+   */
+entity HrLetterType {
+	title String
+    id UUID
+}
+
+  /**
+   * حکم پرسنلی
+   * کلیه اطلاعات نحوه محاسبه حقوق پرسنل
+   * شامل انتخاب کار ساعتی ، روزانه که قابلیت فعال و غیر فعال دارد
+   */
+entity HrLetter {
+  /**
+   * عنوان حکم
+   *
+   */
+	title String
+      /**
+   * شماره حکم
+   *
+   */
+	uniqueNumber String
+    id UUID
+      /**
+   * تاریخ صدور
+   *
+   */
+    issueDate ZonedDateTime
+      /**
+   * تاریخ اجرا
+   *
+   */
+    executionDate ZonedDateTime
+    bpmsApproveStatus Integer
+}
+
+
+  /**
+   * واحد سازمانی
+   *
+   */
+entity OrgUnit {
+	title String
+        id UUID
+}
+
+
+  /**
+   * شرکت
+   *
+   */
+entity Company {
+	title String
+	logo String
+}
+
+
+
+enum CalcType {
+ByHand , BySystem ,
+  /**
+   *
+   * ثابت حکمی
+   */
+Constant
+}
+enum CalcUnit {
+Daily , Hourly
+}
+
+
+  /**
+   * پارامتر های قابل کپی سیستم
+   *
+   */
+entity Parameter {
+/**
+   * عنوان
+   */
+   	title String
+      /**
+   * نحوه محاسبه دستی یا سیستمی
+   */
+	manualOrAuto CalcType
+      /**
+   * فرمول
+   */
+    formula String
+      /**
+   * واحد روزانه یا ساعتی
+   */
+	unit CalcUnit
+      /**
+   * مشمول مالیات
+   */
+    isDeducTax Boolean
+      /**
+   * مشمول بیمه
+   */
+    isDeducInsurance Boolean
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل کارکرد
+   */
+    laborTime LaborTime unique
+  /**
+   * نوع سیستمی پارامتر
+   * عوامل حکمی
+   */
+    hokm Hokm unique
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل حقوق و مزایا
+   */
+    earnings Earning unique
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل کسور
+   */
+    deduction Deduction unique
+
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل دیگر
+   */
+    other Deduction unique
+}
+
+enum Other{
+ UserInput("پرسنل انتخاب شده هنگام ثبت فرم از کاربر گرفته شود")
+
+    LastConstSalary("آخرین مزد ثابت ماهانه")
+}
+enum Tax {
+	Employer("سهم کارفرما") ,
+	Unemployment_Insurance("بیکاری") ,
+	Total_Insurance("کل حق بیمه تامین اجتماعی")
+}
+enum LaborTime {
+	STANDARD("کارکرد موظف (استاندارد)") ,
+	EFFECTIVE("کارکرد موثر") ,
+	LACK_OF_WORK_AND_ABSENT("کسری کار و غیبت") ,
+	OVERTIME("اضافه کاری") ,
+	NOT_EFFECTIVE("کارکرد غیر موثر") ,
+	SHIFT_10("نوبت کاری 10 درصد") ,
+	SHIFT_15("نوبت کاری 15 درصد") ,
+	SHIFT_22_5("نوبت کاری 22.5 درصد") ,
+	NIGHT_WORK("شب کاری") ,
+	MISSION_WORK("ماموریت") ,
+	HOLIDAY_WORK("تعطیل کاری") ,
+	TOTAL_WORK_DAY("مدت اشتغال کل ( روز)"),
+    TOTAL_WORK_CURRENT_YEAR("کارکرد سال جاری ( روز )"),
+    REMAIN_LEAVE_HOURLY("باقی مانده مرخصی (ساعت)"),
+    REMAIN_LEAVE_DAILY("باقی مانده مرخصی (روز)"),
+    Other("سایر"),
+    SANAVAT("سنوات پایان خدمت"),
+    TOTAL_WORK("کل کارکرد")
+
+}
+enum Hokm {
+    Other("سایر"),
+	BASE("حقوق پایه") ,
+	CHILD("حق اولاد") ,
+	LABOR("بن کارگری") ,
+	FOOD("بن خواربار") ,
+	RANGE("مزد رتبه") ,
+	ROLE("مزایای پست") ,
+	EFFECTIVENESS("فوق العاده کارایی") ,
+	HOUSE("حق مسکن") ,
+	TOTAL_HOKM("جمع حکم")
+}
+enum Earning {
+    Other("سایر"),
+	OverTime("اضافه کار") ,
+	Shift("فوق العاده نوبت کاری") ,
+	Night("فوق العاده شب کاری") ,
+	Holiday_Work("فوق العاده تعطیل کاری") ,
+	Mission("حق ماموریت") ,
+	Tax_Insurance("سایر پرداختنی های مشمول بیمه و مالیات") ,
+	OtherEarning_Tax("سایر پرداختنی های مشمول مالیات") ,
+	OtherEarning_Insurance("سایر پرداختنی های مشمول بیمه") ,
+	Total("جمع حقوق و مزایا") ,
+	Total_Insurance("جمع حقوق و مزایای مشمول بیمه") ,
+    Net_Salary_Paid("خالص پرداختی حقوق"),
+	Total_Tax("جمع حقوق و مزایای مشمول مالیات") ,
+    LEAVE("بازخرید مرخصی ") ,
+    YEARLY_BONUS("عیدی") ,
+    YEARS_OF_SERVICE("سنوات خدمت") ,
+    BONUS("پاداش")
+
+}
+
+
+enum Deduction {
+    Other("سایر"),
+    Insurance_Labor("سهم بیمه کارگر 7 درصد"),
+    Tax("مالیات"),
+    Judicial("کسور قضایی"),
+    Prepaid("مساعده"),
+    Loan("اقساط وام"),
+    LastMonthOverPaid("اضافه پرداخت ماه قبل"),
+    Lack_of_work_and_absence("کسری کار و غیبت"),
+    Supplementary_insurance("بیمه تکمیلی"),
+    Total_Deduction("جمع کسور")
+}
+
+  /**
+   * پارامتر های کپی یا انتخاب شده
+   * به حکم پرسنل
+   *قابل تغییر و فعال غیر فعال
+   */
+entity HrLetterParameter {
+ /**
+   * عنوان
+   */
+   	title String
+      /**
+   * نحوه محاسبه دستی یا سیستمی
+   */
+	manualOrAuto CalcType
+      /**
+   * فرمول
+   */
+    formula String
+      /**
+   * واحد روزانه یا ساعتی
+   */
+	unit CalcUnit
+      /**
+   * مشمول مالیات
+   */
+    isDeducTax Boolean
+      /**
+   * مشمول بیمه
+   */
+    isDeducInsurance Boolean
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل کارکرد
+   */
+    laborTime LaborTime
+  /**
+   * نوع سیستمی پارامتر
+   * عوامل حکمی
+   */
+    hokm Hokm
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل حقوق و مزایا
+   */
+    earnings Earning
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل کسور
+   */
+    deduction Deduction
+
+      /**
+   * نوع سیستمی پارامتر
+   * عوامل دیگر
+   */
+    other Deduction
+
+    isEnabled Boolean
+}
+
+
+entity RecordStatus {
+ 	fromDateTime ZonedDateTime
+    toDateTime ZonedDateTime
+    isDeleted Boolean
+    id UUID
+}
+
+relationship ManyToOne {
+AccountHesab{status} to RecordStatus
+Bank{status} to RecordStatus
+AccountTemplate{status} to RecordStatus
+AccountingProcedure{status} to RecordStatus
+Personnel{status} to RecordStatus
+PersonnelStatus{status} to RecordStatus
+OrgPosition{status} to RecordStatus
+TaxTemplate{status} to RecordStatus
+SysConfig{status} to RecordStatus
+Leave{status} to RecordStatus
+LeaveSummary{status} to RecordStatus
+HrLetterType{status} to RecordStatus
+HrLetter{status} to RecordStatus
+OrgUnit{status} to RecordStatus
+Company{status} to RecordStatus
+Parameter{status} to RecordStatus
+HrLetterParameter{status} to RecordStatus
+}
+
+relationship ManyToOne {
+  /**
+   * مرخصی پرسنل
+   *
+   */
+	Leave{personnelId} to Personnel
+
+}
+relationship ManyToOne {
+  /**
+   * نوع حکم
+   *
+   */
+	HrLetter{type} to HrLetterType
+      /**
+   * پرسنل انتخاب شده
+   *
+   */
+	HrLetter{personnelId} to Personnel
+      /**
+   * پست سازمانی
+   *
+   */
+	HrLetter{orgPosition} to OrgPosition
+      /**
+   * واحد سازمانی
+   *
+   */
+	HrLetter{orgUnit} to OrgUnit
+
+      /**
+   *
+   * جانباز و..
+   */
+	HrLetter{personnelStatus} to PersonnelStatus
+
+      /**
+   * عوامل حکمی
+   *
+   */
+	HrLetter{hrLetterParameter} to HrLetterParameter
+}
+
+relationship ManyToOne {
+  Company{internalUser} to ApplicationUser
+}
+
+  /**
+   * ثبت کننده چه کسی است
+   *
+   */
+relationship ManyToOne {
+AccountHesab{internalUser} to ApplicationUser
+Bank{internalUser} to ApplicationUser
+AccountTemplate{internalUser} to ApplicationUser
+TransactionAccount{internalUser} to ApplicationUser
+Transaction{internalUser} to ApplicationUser
+AccountingProcedure{internalUser} to ApplicationUser
+AccProcStep{internalUser} to ApplicationUser
+AccProccParameter{internalUser} to ApplicationUser
+AccountingProcedureExecution{internalUser} to ApplicationUser
+AccProcStepExecution{internalUser} to ApplicationUser
+Work{internalUser} to ApplicationUser
+WorkItem{internalUser} to ApplicationUser
+Personnel{internalUser} to ApplicationUser
+PersonnelStatus{internalUser} to ApplicationUser
+OrgPosition{internalUser} to ApplicationUser
+TaxTemplate{internalUser} to ApplicationUser
+SysConfig{internalUser} to ApplicationUser
+Leave{internalUser} to ApplicationUser
+LeaveSummary{internalUser} to ApplicationUser
+HrLetterType{internalUser} to ApplicationUser
+HrLetter{internalUser} to ApplicationUser
+OrgUnit{internalUser} to ApplicationUser
+Company{internalUser} to ApplicationUser
+Parameter{internalUser} to ApplicationUser
+HrLetterParameter{internalUser} to ApplicationUser
+}
+
+  /**
+   * این رکورد مال کدام شرکت است
+   *
+   */
+relationship ManyToOne {
+AccountHesab{company} to Company
+Bank{company} to Company
+AccountTemplate{company} to Company
+TransactionAccount{company} to Company
+Transaction{company} to Company
+AccountingProcedure{company} to Company
+AccProcStep{company} to Company
+AccProccParameter{company} to Company
+AccountingProcedureExecution{company} to Company
+AccProcStepExecution{company} to Company
+Work{company} to Company
+WorkItem{company} to Company
+Personnel{company} to Company
+PersonnelStatus{company} to Company
+OrgPosition{company} to Company
+TaxTemplate{company} to Company
+SysConfig{company} to Company
+Leave{company} to Company
+LeaveSummary{company} to Company
+HrLetterType{company} to Company
+HrLetter{company} to Company
+OrgUnit{company} to Company
+Parameter{company} to Company
+HrLetterParameter{company} to Company
+}
+// ----------------------accounting
+
+relationship ManyToOne {
+	  /**
+   * حساب ها درختی هستند
+   *
+   */
+  AccountHesab{parentAccountId} to AccountHesab
+    /**
+   * حساب های تفضیل می توانند برای پرسنل باشند
+   *
+   */
+  AccountHesab{personnelId} to Personnel
+
+    /**
+   * اگر به بانکی متصل باشد
+   *
+   */
+  AccountHesab{bank} to Bank
+}
+
+
+  /**
+   * آیتم سند حسابداری
+   *
+   */
+relationship ManyToOne {
+  /**
+   * هر رکورد از سند حسابداری
+   *
+   */
+  TransactionAccount{account} to AccountHesab
+  TransactionAccount{transaction} to Transaction
+}
+
+
+//------------------ accouting procedure
+
+  /**
+   * هر مرحله از عملیات حسابداری
+   *
+   */
+relationship ManyToOne {
+  /**
+   * حسابی که بستانکار خواهد شد
+   *
+   */
+  AccProcStep{creditAccount} to AccountHesab
+    /**
+   * حسابی که بدهکار خواهد شد
+   *
+   */
+  AccProcStep{debitAccount} to AccountHesab
+    /**
+   * پارامتری که محاسبه شده و مبلغ آن وارد خواهد شد
+   *
+   */
+  AccProcStep{parameter} to AccProccParameter
+
+    /**
+   * مربوط به کدام عملیات حسابداری است
+   *
+   */
+  AccProcStep{procedure} to AccountingProcedure
+}
+
+  /**
+   * عملیات حسابداری
+   *
+   */
+relationship ManyToOne {
+  /**
+   * عملیات حسابداری می تواند بعد از عملیات دیگر اجرا شود
+   *
+   */
+  AccountingProcedure{executeAfter} to AccountingProcedure
+}
+// execution
+
+  /**
+   * لاگ اجرا
+   *
+   */
+relationship ManyToOne {
+  /**
+   * لاگ اجرا
+   * حسابی که بستانکار شد
+   */
+  AccProcStepExecution{creditAccount} to AccountHesab
+    /**
+   * حسابی که بدهکار شد
+   *
+   */
+  AccProcStepExecution{debitAccount} to AccountHesab
+    /**
+   * مربوط به اجرای کدام عملیات حسابداری است
+   *
+   */
+  AccProcStepExecution{procedure} to AccountingProcedureExecution
+
+    /**
+   * مربوط به اجرای کدام مرحله از عملیات حسابداری است
+   *
+   */
+  AccProcStepExecution{step} to AccProcStep
+}
+
+relationship ManyToOne {
+  /**
+   * اجرا های عملیات حسابداری
+   *
+   */
+  AccountingProcedureExecution{procedure} to AccountingProcedure
+}
+// -----------------work
+
+
+relationship ManyToOne {
+  /**
+   * کار یک ماه را نشان میدهد و ایتم جزئیات کارکرد آن ماه برای پرسنل
+   *
+   */
+ WorkItem{work} to Work
+}
+
+relationship OneToOne {
+  /**
+   * این مقدار برای کدام پارامتر از حکم محاسبه شده است
+   *
+   */
+ WorkItem{hrLetterParameter} to HrLetterParameter
+}
+
+relationship ManyToOne {
+  /**
+   * واحد سازمانی درختی
+   *
+   */
+OrgUnit{parent} to OrgUnit
+}
+// -----------------work end
+
+paginate AccountHesab with pagination
+paginate Bank with pagination
+paginate AccountTemplate with pagination
+paginate TransactionAccount with pagination
+paginate Transaction with pagination
+paginate AccountingProcedure with pagination
+paginate AccProcStep with pagination
+paginate AccProccParameter with pagination
+paginate AccountingProcedureExecution with pagination
+paginate AccProcStepExecution with pagination
+paginate Work with pagination
+paginate WorkItem with pagination
+paginate Personnel with pagination
+paginate PersonnelStatus with pagination
+paginate OrgPosition with pagination
+paginate TaxTemplate with pagination
+paginate SysConfig with pagination
+paginate Leave with pagination
+paginate LeaveSummary with pagination
+paginate HrLetterType with pagination
+paginate HrLetter with pagination
+paginate OrgUnit with pagination
+paginate Parameter with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+search * with elasticsearch
+// Set an angular suffix
+// angularSuffix * with mySuffix

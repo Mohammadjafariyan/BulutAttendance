@@ -1,0 +1,301 @@
+<div>
+  <h2 id="page-heading" data-cy="HrLetterHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.home.title">Hr Letters</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-hr-letter"
+        [routerLink]="['/bulutattendance/hr-letter/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.home.createLabel"
+          >Create a new Hr Letter</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.home.search"
+          >Search for Hr Letter</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendanceHrLetter.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (hrLetters?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.home.notFound">No Hr Letters found</span>
+    </div>
+  }
+
+  @if (hrLetters && hrLetters.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.title">Title</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="uniqueNumber">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.uniqueNumber">Unique Number</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.id">Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="issueDate">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.issueDate">Issue Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="executionDate">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.executionDate">Execution Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="bpmsApproveStatus">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.bpmsApproveStatus">Bpms Approve Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.status">Status</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="type.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.type">Type</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="personnelId.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.personnelId">Personnel Id</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="orgPosition.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.orgPosition">Org Position</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="orgUnit.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.orgUnit">Org Unit</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="personnelStatus.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.personnelStatus">Personnel Status</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hrLetterParameter.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.hrLetterParameter">Hr Letter Parameter</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (hrLetter of hrLetters; track trackId) {
+            <tr data-cy="entityTable">
+              <td>{{ hrLetter.title }}</td>
+              <td>{{ hrLetter.uniqueNumber }}</td>
+              <td>
+                <a [routerLink]="['/bulutattendance/hr-letter', hrLetter.id, 'view']">{{ hrLetter.id }}</a>
+              </td>
+              <td>{{ hrLetter.issueDate | formatMediumDatetime }}</td>
+              <td>{{ hrLetter.executionDate | formatMediumDatetime }}</td>
+              <td>{{ hrLetter.bpmsApproveStatus }}</td>
+              <td>
+                @if (hrLetter.status) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/record-status', hrLetter.status.id, 'view']">{{ hrLetter.status.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetter.type) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/hr-letter-type', hrLetter.type.id, 'view']">{{ hrLetter.type.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetter.personnelId) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/personnel', hrLetter.personnelId.id, 'view']">{{ hrLetter.personnelId.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetter.orgPosition) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/org-position', hrLetter.orgPosition.id, 'view']">{{ hrLetter.orgPosition.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetter.orgUnit) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/org-unit', hrLetter.orgUnit.id, 'view']">{{ hrLetter.orgUnit.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetter.personnelStatus) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/personnel-status', hrLetter.personnelStatus.id, 'view']">{{
+                      hrLetter.personnelStatus.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetter.hrLetterParameter) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/hr-letter-parameter', hrLetter.hrLetterParameter.id, 'view']">{{
+                      hrLetter.hrLetterParameter.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetter.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', hrLetter.internalUser.id, 'view']">{{
+                      hrLetter.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (hrLetter.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', hrLetter.company.id, 'view']">{{ hrLetter.company.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/hr-letter', hrLetter.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/hr-letter', hrLetter.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(hrLetter)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (hrLetters && hrLetters.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

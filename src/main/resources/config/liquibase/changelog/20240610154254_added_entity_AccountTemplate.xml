@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity AccountTemplate.
+    -->
+    <changeSet id="20240610154254-1" author="jhipster">
+        <createTable tableName="account_template" remarks="حساب هایی که مال سیستم هستند و موقع ثبت شرکت به حساب های شرکت\nکپی می شوند">
+            <column name="title" type="varchar(255)" remarks="نام حساب">
+                <constraints nullable="true" />
+            </column>
+            <column name="code" type="varchar(255)" remarks="کد حساب">
+                <constraints nullable="true" />
+            </column>
+            <column name="level" type="integer" remarks="سطح حساب">
+                <constraints nullable="true" />
+            </column>
+            <column name="level_title" type="varchar(255)" remarks="عنوان سطح حساب">
+                <constraints nullable="true" />
+            </column>
+            <column name="id" type="${uuidType}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="varchar(255)" remarks="ماهیت حساب : بدهکار یا بستانکار">
+                <constraints nullable="true" />
+            </column>
+            <column name="level_in_tree" type="varchar(255)" remarks="سطح حساب داری : کل ، معین ، تفظیل">
+                <constraints nullable="true" />
+            </column>
+            <column name="debit_amount" type="decimal(21,2)" remarks="مانده بدهکار">
+                <constraints nullable="true" />
+            </column>
+            <column name="credit_amount" type="decimal(21,2)" remarks="مانده بستانکار">
+                <constraints nullable="true" />
+            </column>
+            <column name="type_in_formula" type="varchar(255)" remarks="تاثیر در فرمول معادله حسابداری">
+                <constraints nullable="true" />
+            </column>
+            <column name="status_id" type="${uuidType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="internal_user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="company_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240610154254-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/account_template.csv"
+                  separator=";"
+                  tableName="account_template"
+                  usePreparedStatements="true">
+            <column name="title" type="string"/>
+            <column name="code" type="string"/>
+            <column name="level" type="numeric"/>
+            <column name="level_title" type="string"/>
+            <column name="id" type="${uuidType}"/>
+            <column name="type" type="string"/>
+            <column name="level_in_tree" type="string"/>
+            <column name="debit_amount" type="numeric"/>
+            <column name="credit_amount" type="numeric"/>
+            <column name="type_in_formula" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

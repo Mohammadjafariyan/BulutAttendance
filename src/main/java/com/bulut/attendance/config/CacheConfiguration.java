@@ -78,6 +78,33 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer(javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration) {
         return cm -> {
+            createCache(cm, com.bulut.attendance.domain.AccountHesab.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.AccountingProcedure.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.AccountingProcedureExecution.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.AccountTemplate.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.AccProccParameter.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.AccProcStep.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.AccProcStepExecution.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.ApplicationUser.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.Bank.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.Company.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.HrLetter.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.HrLetterParameter.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.HrLetterType.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.Leave.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.LeaveSummary.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.OrgPosition.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.OrgUnit.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.Parameter.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.Personnel.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.PersonnelStatus.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.RecordStatus.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.SysConfig.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.TaxTemplate.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.Transaction.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.TransactionAccount.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.Work.class.getName(), jcacheConfiguration);
+            createCache(cm, com.bulut.attendance.domain.WorkItem.class.getName(), jcacheConfiguration);
             // jhipster-needle-redis-add-entry
         };
     }

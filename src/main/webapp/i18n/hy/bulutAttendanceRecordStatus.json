@@ -1,0 +1,27 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceRecordStatus": {
+      "home": {
+        "title": "Record Statuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Record Status",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Record Status",
+        "search": "Գտնել Record Status",
+        "notFound": "No Record Statuses found"
+      },
+      "created": "Նոր Record Status ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Record Status թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Record Status հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Record Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Record Status"
+      },
+      "fromDateTime": "From Date Time",
+      "toDateTime": "To Date Time",
+      "isDeleted": "Is Deleted",
+      "id": "Id"
+    }
+  }
+}

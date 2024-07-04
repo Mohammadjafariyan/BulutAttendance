@@ -1,0 +1,31 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceLeave": {
+      "home": {
+        "title": "Leaves",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Leave ekle",
+        "createOrEditLabel": "Yeni Leave ekle veya guncelle",
+        "search": "Leave ara",
+        "notFound": "Leaves kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Leave eklendi",
+      "updated": "{{ param }} nolu Leave guncellendi",
+      "deleted": "{{ param }} nolu Leave silindi",
+      "delete": {
+        "question": "{{ id }} nolu Leave silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Leave"
+      },
+      "start": "Start",
+      "end": "End",
+      "id": "Id",
+      "bpmsApproveStatus": "Bpms Approve Status",
+      "status": "Status",
+      "personnelId": "Personnel Id",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

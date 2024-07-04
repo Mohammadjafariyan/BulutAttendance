@@ -1,0 +1,33 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccountingProcedureExecution": {
+      "home": {
+        "title": "Accounting Procedure Executions",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Accounting Procedure Execution ekle",
+        "createOrEditLabel": "Yeni Accounting Procedure Execution ekle veya guncelle",
+        "search": "Accounting Procedure Execution ara",
+        "notFound": "Accounting Procedure Executions kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Accounting Procedure Execution eklendi",
+      "updated": "{{ param }} nolu Accounting Procedure Execution guncellendi",
+      "deleted": "{{ param }} nolu Accounting Procedure Execution silindi",
+      "delete": {
+        "question": "{{ id }} nolu Accounting Procedure Execution silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Accounting Procedure Execution"
+      },
+      "id": "ID",
+      "dateTime": "Date Time",
+      "desc": "Desc",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "procedure": "Procedure",
+      "help": {
+        "dateTime": "تاریخ اجرا\n",
+        "desc": "توضیحات\n"
+      }
+    }
+  }
+}

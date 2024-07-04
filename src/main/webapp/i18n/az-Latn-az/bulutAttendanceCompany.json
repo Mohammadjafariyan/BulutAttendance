@@ -1,0 +1,28 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceCompany": {
+      "home": {
+        "title": "Companies",
+        "refreshListLabel": "Siyahını yenilə",
+        "createLabel": "Yeni Company əlavə et",
+        "createOrEditLabel": "Yeni Company əlavə et və ya yenilə",
+        "search": "Company axtar",
+        "notFound": "Companies məlumatı tapılmadı"
+      },
+      "created": "{{ param }} ID ilə bir Company əlavə edildi",
+      "updated": "{{ param }} nolu Company dəyişildi",
+      "deleted": "{{ param }} nolu Company silindi",
+      "delete": {
+        "question": "{{ id }} nolu Company silinəcək. Davam etmək istəyirsiniz?"
+      },
+      "detail": {
+        "title": "Company"
+      },
+      "id": "ID",
+      "title": "Title",
+      "logo": "Logo",
+      "status": "Status",
+      "internalUser": "Internal User"
+    }
+  }
+}

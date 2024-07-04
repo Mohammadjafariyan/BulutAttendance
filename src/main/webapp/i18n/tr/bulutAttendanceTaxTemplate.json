@@ -1,0 +1,31 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceTaxTemplate": {
+      "home": {
+        "title": "Tax Templates",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Tax Template ekle",
+        "createOrEditLabel": "Yeni Tax Template ekle veya guncelle",
+        "search": "Tax Template ara",
+        "notFound": "Tax Templates kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Tax Template eklendi",
+      "updated": "{{ param }} nolu Tax Template guncellendi",
+      "deleted": "{{ param }} nolu Tax Template silindi",
+      "delete": {
+        "question": "{{ id }} nolu Tax Template silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Tax Template"
+      },
+      "rangeFrom": "Range From",
+      "rangeTo": "Range To",
+      "percent": "Percent",
+      "year": "Year",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (personnelStatus()) {
+      <div>
+        <h2 data-cy="personnelStatusDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnelStatus.detail.title">Personnel Status</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnelStatus.title">Title</span></dt>
+          <dd>
+            <span>{{ personnelStatus()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnelStatus.id">Id</span></dt>
+          <dd>
+            <span>{{ personnelStatus()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnelStatus.status">Status</span></dt>
+          <dd>
+            @if (personnelStatus()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', personnelStatus()!.status?.id, 'view']">{{
+                  personnelStatus()!.status?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnelStatus.internalUser">Internal User</span></dt>
+          <dd>
+            @if (personnelStatus()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', personnelStatus()!.internalUser?.id, 'view']">{{
+                  personnelStatus()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendancePersonnelStatus.company">Company</span></dt>
+          <dd>
+            @if (personnelStatus()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', personnelStatus()!.company?.id, 'view']">{{
+                  personnelStatus()!.company?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/personnel-status', personnelStatus()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

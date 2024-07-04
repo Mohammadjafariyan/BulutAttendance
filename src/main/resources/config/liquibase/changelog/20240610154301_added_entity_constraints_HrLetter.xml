@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity HrLetter.
+    -->
+    <changeSet id="20240610154301-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="record_status"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hr_letter_type"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="personnel_id_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__personnel_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="personnel"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="org_position_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__org_position_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="org_position"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="org_unit_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__org_unit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="org_unit"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="personnel_status_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__personnel_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="personnel_status"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="hr_letter_parameter_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__hr_letter_parameter_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hr_letter_parameter"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="internal_user_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__internal_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="application_user"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="hr_letter"
+                                 constraintName="fk_hr_letter__company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"
+                                 />
+    </changeSet>
+</databaseChangeLog>

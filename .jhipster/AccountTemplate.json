@@ -1,0 +1,115 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154254"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "حساب هایی که مال سیستم هستند و موقع ثبت شرکت به حساب های شرکت\\nکپی می شوند",
+  "fields": [
+    {
+      "documentation": "نام حساب",
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "کد حساب",
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "سطح حساب",
+      "fieldName": "level",
+      "fieldType": "Integer"
+    },
+    {
+      "documentation": "عنوان سطح حساب",
+      "fieldName": "levelTitle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "documentation": "ماهیت حساب : بدهکار یا بستانکار",
+      "fieldName": "type",
+      "fieldType": "AccountType",
+      "fieldValues": "Credit,Debit",
+      "fieldValuesJavadocs": {
+        "Credit": "\n   * بستانکار\n",
+        "Debit": "\n   * بدهکار\n"
+      }
+    },
+    {
+      "documentation": "سطح حساب داری : کل ، معین ، تفظیل",
+      "fieldName": "levelInTree",
+      "fieldType": "AccountLevelInTree",
+      "fieldValues": "GROUP,KOL,MOAYAN,TAFZIL,TAFZIL_2,TAFZIL_3,TAFZIL_4,TAFZIL_5,TAFZIL_6,TAFZIL_7,TAFZIL_8,TAFZIL_9,TAFZIL_10",
+      "fieldValuesJavadocs": {
+        "GROUP": "\n   * گروه حساب\n",
+        "KOL": "\n   * حساب کل\n",
+        "MOAYAN": "\n   * حساب معین\n",
+        "TAFZIL": "\n   * تفضیل\n",
+        "TAFZIL_10": "\n   * تفضیل \n   * سطح 10\n",
+        "TAFZIL_2": "\n   * تفضیل \n   * سطح 2\n",
+        "TAFZIL_3": "\n   * تفضیل \n   * سطح 3\n",
+        "TAFZIL_4": "\n   * تفضیل \n   * سطح 4\n",
+        "TAFZIL_5": "\n   * تفضیل \n   * سطح 5\n",
+        "TAFZIL_6": "\n   * تفضیل \n   * سطح 6\n",
+        "TAFZIL_7": "\n   * تفضیل \n   * سطح 7\n",
+        "TAFZIL_8": "\n   * تفضیل \n   * سطح 8\n",
+        "TAFZIL_9": "\n   * تفضیل \n   * سطح 9\n"
+      }
+    },
+    {
+      "documentation": "مانده بدهکار",
+      "fieldName": "debitAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "مانده بستانکار",
+      "fieldName": "creditAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "تاثیر در فرمول معادله حسابداری",
+      "fieldName": "typeInFormula",
+      "fieldType": "AccountingFormulaType",
+      "fieldValues": "ASSETS,EXPENSES,DIVIDENDS,LIABILITIES,OWNERS_EQUITY,REVENUE",
+      "fieldValuesJavadocs": {
+        "ASSETS": "\n   * دارایی \n",
+        "DIVIDENDS": "\n   * سود \n",
+        "EXPENSES": "\n   * هزینه \n",
+        "LIABILITIES": "\n   * بدهی ها \n",
+        "OWNERS_EQUITY": "\n   * حقوق صاحبان سهام  \n",
+        "REVENUE": "\n   * درآمد \n"
+      }
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "AccountTemplate",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

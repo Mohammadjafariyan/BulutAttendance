@@ -1,0 +1,70 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154257"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "لاگ اجرای عملیات حسابداری\\n",
+  "fields": [
+    {
+      "fieldName": "debitAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "creditAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "desc",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "AccProcStepExecution",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "لاگ اجرا\\nحسابی که بستانکار شد",
+      "otherEntityName": "accountHesab",
+      "relationshipName": "creditAccount",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "حسابی که بدهکار شد\\n",
+      "otherEntityName": "accountHesab",
+      "relationshipName": "debitAccount",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "مربوط به اجرای کدام عملیات حسابداری است\\n",
+      "otherEntityName": "accountingProcedureExecution",
+      "relationshipName": "procedure",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "مربوط به اجرای کدام مرحله از عملیات حسابداری است\\n",
+      "otherEntityName": "accProcStep",
+      "relationshipName": "step",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

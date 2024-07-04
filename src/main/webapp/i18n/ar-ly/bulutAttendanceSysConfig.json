@@ -1,0 +1,30 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceSysConfig": {
+      "home": {
+        "title": "Sys Configs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sys Config",
+        "createOrEditLabel": "Create or edit a Sys Config",
+        "search": "Search for Sys Config",
+        "notFound": "No Sys Configs found"
+      },
+      "created": "A new Sys Config is created with identifier {{ param }}",
+      "updated": "A Sys Config is updated with identifier {{ param }}",
+      "deleted": "A Sys Config is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sys Config {{ id }}?"
+      },
+      "detail": {
+        "title": "Sys Config"
+      },
+      "taxFormula": "Tax Formula",
+      "sanavatFormula": "Sanavat Formula",
+      "year": "Year",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

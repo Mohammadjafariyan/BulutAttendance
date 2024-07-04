@@ -1,0 +1,52 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154317"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "جزئیات مقدار هر عامل حکمی در این جدول ثبت مشود\\nشامل کارکرد ، حقوق مزایا ، کسورات ، بیمه و غیره",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "WorkItem",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "این مقدار برای کدام پارامتر از حکم محاسبه شده است\\n",
+      "otherEntityName": "hrLetterParameter",
+      "relationshipName": "hrLetterParameter",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "کار یک ماه را نشان میدهد و ایتم جزئیات کارکرد آن ماه برای پرسنل\\n",
+      "otherEntityName": "work",
+      "relationshipName": "work",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

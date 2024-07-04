@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154314"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "سند",
+  "entityTableName": "jhi_transaction",
+  "fields": [
+    {
+      "documentation": "تاریخ",
+      "fieldName": "issueDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "documentation": "مبلغ کل",
+      "fieldName": "totalAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "توضیحات",
+      "fieldName": "desc",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "شماره سند",
+      "fieldName": "docNumber",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "Transaction",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

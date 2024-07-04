@@ -1,0 +1,372 @@
+<div>
+  <h2 id="page-heading" data-cy="ParameterHeading">
+    <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.home.title">Parameters</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-parameter"
+        [routerLink]="['/bulutattendance/parameter/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.home.createLabel"
+          >Create a new Parameter</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.home.search"
+          >Search for Parameter</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'bulutAttendanceApp.bulutAttendanceParameter.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (parameters?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.home.notFound">No Parameters found</span>
+    </div>
+  }
+
+  @if (parameters && parameters.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">شناسه</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.title">Title</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="manualOrAuto">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.manualOrAuto">Manual Or Auto</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="formula">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.formula">Formula</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="unit">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.unit">Unit</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isDeducTax">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.isDeducTax">Is Deduc Tax</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isDeducInsurance">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.isDeducInsurance">Is Deduc Insurance</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="laborTime">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.laborTime">Labor Time</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hokm">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.hokm">Hokm</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="earnings">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.earnings">Earnings</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="deduction">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.deduction">Deduction</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="other">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.other">Other</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.status">Status</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="internalUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="company.id">
+              <div class="d-flex">
+                <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.company">Company</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (parameter of parameters; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/bulutattendance/parameter', parameter.id, 'view']">{{ parameter.id }}</a>
+              </td>
+              <td>{{ parameter.title }}</td>
+              <td [jhiTranslate]="'bulutAttendanceApp.CalcType.' + (parameter.manualOrAuto ?? 'null')">
+                {{ { null: '', ByHand: 'ByHand', BySystem: 'BySystem', Constant: 'Constant' }[parameter.manualOrAuto ?? 'null'] }}
+              </td>
+              <td>{{ parameter.formula }}</td>
+              <td [jhiTranslate]="'bulutAttendanceApp.CalcUnit.' + (parameter.unit ?? 'null')">
+                {{ { null: '', Daily: 'Daily', Hourly: 'Hourly' }[parameter.unit ?? 'null'] }}
+              </td>
+              <td>{{ parameter.isDeducTax }}</td>
+              <td>{{ parameter.isDeducInsurance }}</td>
+              <td [jhiTranslate]="'bulutAttendanceApp.LaborTime.' + (parameter.laborTime ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    STANDARD: 'کارکرد موظف (استاندارد',
+                    EFFECTIVE: 'کارکرد موثر',
+                    LACK_OF_WORK_AND_ABSENT: 'کسری کار و غیبت',
+                    OVERTIME: 'اضافه کاری',
+                    NOT_EFFECTIVE: 'کارکرد غیر موثر',
+                    SHIFT_10: 'نوبت کاری 10 درصد',
+                    SHIFT_15: 'نوبت کاری 15 درصد',
+                    SHIFT_22_5: 'نوبت کاری 22.5 درصد',
+                    NIGHT_WORK: 'شب کاری',
+                    MISSION_WORK: 'ماموریت',
+                    HOLIDAY_WORK: 'تعطیل کاری',
+                    TOTAL_WORK_DAY: 'مدت اشتغال کل ( روز',
+                    TOTAL_WORK_CURRENT_YEAR: 'کارکرد سال جاری ( روز ',
+                    REMAIN_LEAVE_HOURLY: 'باقی مانده مرخصی (ساعت',
+                    REMAIN_LEAVE_DAILY: 'باقی مانده مرخصی (روز',
+                    Other: 'سایر',
+                    SANAVAT: 'سنوات پایان خدمت',
+                    TOTAL_WORK: 'کل کارکرد'
+                  }[parameter.laborTime ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.Hokm.' + (parameter.hokm ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Other: 'سایر',
+                    BASE: 'حقوق پایه',
+                    CHILD: 'حق اولاد',
+                    LABOR: 'بن کارگری',
+                    FOOD: 'بن خواربار',
+                    RANGE: 'مزد رتبه',
+                    ROLE: 'مزایای پست',
+                    EFFECTIVENESS: 'فوق العاده کارایی',
+                    HOUSE: 'حق مسکن',
+                    TOTAL_HOKM: 'جمع حکم'
+                  }[parameter.hokm ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.Earning.' + (parameter.earnings ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Other: 'سایر',
+                    OverTime: 'اضافه کار',
+                    Shift: 'فوق العاده نوبت کاری',
+                    Night: 'فوق العاده شب کاری',
+                    Holiday_Work: 'فوق العاده تعطیل کاری',
+                    Mission: 'حق ماموریت',
+                    Tax_Insurance: 'سایر پرداختنی های مشمول بیمه و مالیات',
+                    OtherEarning_Tax: 'سایر پرداختنی های مشمول مالیات',
+                    OtherEarning_Insurance: 'سایر پرداختنی های مشمول بیمه',
+                    Total: 'جمع حقوق و مزایا',
+                    Total_Insurance: 'جمع حقوق و مزایای مشمول بیمه',
+                    Net_Salary_Paid: 'خالص پرداختی حقوق',
+                    Total_Tax: 'جمع حقوق و مزایای مشمول مالیات',
+                    LEAVE: 'بازخرید مرخصی ',
+                    YEARLY_BONUS: 'عیدی',
+                    YEARS_OF_SERVICE: 'سنوات خدمت',
+                    BONUS: 'پاداش'
+                  }[parameter.earnings ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.Deduction.' + (parameter.deduction ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Other: 'سایر',
+                    Insurance_Labor: 'سهم بیمه کارگر 7 درصد',
+                    Tax: 'مالیات',
+                    Judicial: 'کسور قضایی',
+                    Prepaid: 'مساعده',
+                    Loan: 'اقساط وام',
+                    LastMonthOverPaid: 'اضافه پرداخت ماه قبل',
+                    Lack_of_work_and_absence: 'کسری کار و غیبت',
+                    Supplementary_insurance: 'بیمه تکمیلی',
+                    Total_Deduction: 'جمع کسور'
+                  }[parameter.deduction ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'bulutAttendanceApp.Deduction.' + (parameter.other ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Other: 'سایر',
+                    Insurance_Labor: 'سهم بیمه کارگر 7 درصد',
+                    Tax: 'مالیات',
+                    Judicial: 'کسور قضایی',
+                    Prepaid: 'مساعده',
+                    Loan: 'اقساط وام',
+                    LastMonthOverPaid: 'اضافه پرداخت ماه قبل',
+                    Lack_of_work_and_absence: 'کسری کار و غیبت',
+                    Supplementary_insurance: 'بیمه تکمیلی',
+                    Total_Deduction: 'جمع کسور'
+                  }[parameter.other ?? 'null']
+                }}
+              </td>
+              <td>
+                @if (parameter.status) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/record-status', parameter.status.id, 'view']">{{ parameter.status.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (parameter.internalUser) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/application-user', parameter.internalUser.id, 'view']">{{
+                      parameter.internalUser.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (parameter.company) {
+                  <div>
+                    <a [routerLink]="['/bulutattendance/company', parameter.company.id, 'view']">{{ parameter.company.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/bulutattendance/parameter', parameter.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">مشاهده</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/bulutattendance/parameter', parameter.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">ویرایش</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(parameter)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">حذف</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (parameters && parameters.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

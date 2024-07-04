@@ -1,0 +1,38 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendancePersonnel": {
+      "home": {
+        "title": "Personnel",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Personnel",
+        "createOrEditLabel": "Create or edit a Personnel",
+        "search": "Search for Personnel",
+        "notFound": "No Personnel found"
+      },
+      "created": "A new Personnel is created with identifier {{ param }}",
+      "updated": "A Personnel is updated with identifier {{ param }}",
+      "deleted": "A Personnel is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Personnel {{ id }}?"
+      },
+      "detail": {
+        "title": "Personnel"
+      },
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "requitmentDate": "Requitment Date",
+      "father": "Father",
+      "shenasname": "Shenasname",
+      "mahalesodur": "Mahalesodur",
+      "birthday": "Birthday",
+      "isSingle": "Is Single",
+      "lastEducation": "Last Education",
+      "educationField": "Education Field",
+      "children": "Children",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

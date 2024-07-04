@@ -1,0 +1,29 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceWorkItem": {
+      "home": {
+        "title": "Work Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Work Item",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Work Item",
+        "search": "Գտնել Work Item",
+        "notFound": "No Work Items found"
+      },
+      "created": "Նոր Work Item ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Work Item թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Work Item հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Work Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Work Item"
+      },
+      "id": "Id",
+      "amount": "Amount",
+      "hrLetterParameter": "Hr Letter Parameter",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "work": "Work"
+    }
+  }
+}

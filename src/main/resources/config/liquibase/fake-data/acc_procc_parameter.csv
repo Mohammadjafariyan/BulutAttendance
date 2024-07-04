@@ -1,0 +1,11 @@
+id;title;manual_or_auto;formula;unit;is_deduc_tax;is_deduc_insurance;labor_time;hokm;earnings;deduction;other
+1;لباس;ByHand;خنده;Daily;true;false;Other;BASE;BONUS;Loan;Loan
+2;نشان دادن painfully;BySystem;وای لیکن;Daily;true;false;LACK_OF_WORK_AND_ABSENT;LABOR;BONUS;Insurance_Labor;Judicial
+3;در عوض;Constant;روی اَخ هر چند;Daily;true;false;OVERTIME;FOOD;Shift;Supplementary_insurance;Judicial
+4;زیرا هورا رهبری کردن;Constant;تغییر دادن خوشحال شکسته;Daily;true;false;SHIFT_15;HOUSE;Holiday_Work;Total_Deduction;Tax
+5;شاعر برابر با;Constant;خنده کامپیوتر فوتبال;Daily;true;false;TOTAL_WORK_DAY;LABOR;Other;Other;Insurance_Labor
+6;بیسبال و خبری;ByHand;همچون واو آفرین;Daily;false;false;OVERTIME;HOUSE;Night;Lack_of_work_and_absence;Judicial
+7;پسر زیرا غمگین;ByHand;همچون با هر شک fully;Hourly;true;true;TOTAL_WORK_DAY;EFFECTIVENESS;LEAVE;Loan;Total_Deduction
+8;بالا;Constant;داشتن;Hourly;false;true;SANAVAT;HOUSE;YEARS_OF_SERVICE;Supplementary_insurance;Insurance_Labor
+9;تا حدودی;ByHand;به طوری که;Daily;false;true;NIGHT_WORK;FOOD;OtherEarning_Insurance;Prepaid;Loan
+10;ساختن;ByHand;دانشجویی تسلط داشتن جواب دادن;Daily;true;false;SHIFT_10;RANGE;YEARLY_BONUS;Prepaid;Loan

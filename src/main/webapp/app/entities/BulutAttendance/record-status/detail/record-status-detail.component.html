@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (recordStatus()) {
+      <div>
+        <h2 data-cy="recordStatusDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceRecordStatus.detail.title">Record Status</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceRecordStatus.fromDateTime">From Date Time</span></dt>
+          <dd>
+            <span>{{ recordStatus()!.fromDateTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceRecordStatus.toDateTime">To Date Time</span></dt>
+          <dd>
+            <span>{{ recordStatus()!.toDateTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceRecordStatus.isDeleted">Is Deleted</span></dt>
+          <dd>
+            <span>{{ recordStatus()!.isDeleted }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceRecordStatus.id">Id</span></dt>
+          <dd>
+            <span>{{ recordStatus()!.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/record-status', recordStatus()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceHrLetterType": {
+      "home": {
+        "title": "Hr Letter Types",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Hr Letter Type ekle",
+        "createOrEditLabel": "Yeni Hr Letter Type ekle veya guncelle",
+        "search": "Hr Letter Type ara",
+        "notFound": "Hr Letter Types kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Hr Letter Type eklendi",
+      "updated": "{{ param }} nolu Hr Letter Type guncellendi",
+      "deleted": "{{ param }} nolu Hr Letter Type silindi",
+      "delete": {
+        "question": "{{ id }} nolu Hr Letter Type silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Hr Letter Type"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

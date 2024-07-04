@@ -1,0 +1,28 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendancePersonnelStatus": {
+      "home": {
+        "title": "Personnel Statuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Personnel Status",
+        "createOrEditLabel": "Create or edit a Personnel Status",
+        "search": "Search for Personnel Status",
+        "notFound": "No Personnel Statuses found"
+      },
+      "created": "A new Personnel Status is created with identifier {{ param }}",
+      "updated": "A Personnel Status is updated with identifier {{ param }}",
+      "deleted": "A Personnel Status is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Personnel Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Personnel Status"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

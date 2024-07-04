@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (bank()) {
+      <div>
+        <h2 data-cy="bankDetailsHeading"><span jhiTranslate="bulutAttendanceApp.bulutAttendanceBank.detail.title">Bank</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceBank.help.title' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceBank.title"
+              >Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ bank()!.title }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceBank.help.code' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceBank.code"
+              >Code</span
+            >
+          </dt>
+          <dd>
+            <span>{{ bank()!.code }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceBank.id">Id</span></dt>
+          <dd>
+            <span>{{ bank()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceBank.status">Status</span></dt>
+          <dd>
+            @if (bank()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', bank()!.status?.id, 'view']">{{ bank()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceBank.internalUser">Internal User</span></dt>
+          <dd>
+            @if (bank()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', bank()!.internalUser?.id, 'view']">{{ bank()!.internalUser?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceBank.company">Company</span></dt>
+          <dd>
+            @if (bank()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', bank()!.company?.id, 'view']">{{ bank()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/bank', bank()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

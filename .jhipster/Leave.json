@@ -1,0 +1,59 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154304"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "مرخصی\\n",
+  "fields": [
+    {
+      "fieldName": "start",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "end",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "bpmsApproveStatus",
+      "fieldType": "Integer"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "Leave",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "مرخصی پرسنل\\n",
+      "otherEntityName": "personnel",
+      "relationshipName": "personnelId",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

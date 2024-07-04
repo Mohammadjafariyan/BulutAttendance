@@ -1,0 +1,30 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccProcStep": {
+      "home": {
+        "title": "Acc Proc Steps",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Acc Proc Step",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Acc Proc Step",
+        "search": "Գտնել Acc Proc Step",
+        "notFound": "No Acc Proc Steps found"
+      },
+      "created": "Նոր Acc Proc Step ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Acc Proc Step թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Acc Proc Step հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Acc Proc Step {{ id }}?"
+      },
+      "detail": {
+        "title": "Acc Proc Step"
+      },
+      "id": "ID",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "creditAccount": "Credit Account",
+      "debitAccount": "Debit Account",
+      "parameter": "Parameter",
+      "procedure": "Procedure"
+    }
+  }
+}

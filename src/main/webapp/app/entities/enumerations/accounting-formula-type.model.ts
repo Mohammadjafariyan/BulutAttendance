@@ -1,0 +1,13 @@
+export enum AccountingFormulaType {
+  ASSETS = 'ASSETS',
+
+  EXPENSES = 'EXPENSES',
+
+  DIVIDENDS = 'DIVIDENDS',
+
+  LIABILITIES = 'LIABILITIES',
+
+  OWNERS_EQUITY = 'OWNERS_EQUITY',
+
+  REVENUE = 'REVENUE',
+}

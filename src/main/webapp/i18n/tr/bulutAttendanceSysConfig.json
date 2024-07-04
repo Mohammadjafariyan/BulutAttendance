@@ -1,0 +1,30 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceSysConfig": {
+      "home": {
+        "title": "Sys Configs",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Sys Config ekle",
+        "createOrEditLabel": "Yeni Sys Config ekle veya guncelle",
+        "search": "Sys Config ara",
+        "notFound": "Sys Configs kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Sys Config eklendi",
+      "updated": "{{ param }} nolu Sys Config guncellendi",
+      "deleted": "{{ param }} nolu Sys Config silindi",
+      "delete": {
+        "question": "{{ id }} nolu Sys Config silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Sys Config"
+      },
+      "taxFormula": "Tax Formula",
+      "sanavatFormula": "Sanavat Formula",
+      "year": "Year",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

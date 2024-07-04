@@ -1,0 +1,294 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-hr-letter-heading"
+        data-cy="HrLetterCreateUpdateHeading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.home.createOrEditLabel"
+      >
+        Create or edit a Hr Letter
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_title"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceHrLetter.help.title' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.title"
+            >Title</label
+          >
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_uniqueNumber"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceHrLetter.help.uniqueNumber' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.uniqueNumber"
+            >Unique Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="uniqueNumber"
+            id="field_uniqueNumber"
+            data-cy="uniqueNumber"
+            formControlName="uniqueNumber"
+          />
+        </div>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_issueDate"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceHrLetter.help.issueDate' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.issueDate"
+            >Issue Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_issueDate"
+              data-cy="issueDate"
+              type="datetime-local"
+              class="form-control"
+              name="issueDate"
+              formControlName="issueDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_executionDate"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceHrLetter.help.executionDate' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.executionDate"
+            >Execution Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_executionDate"
+              data-cy="executionDate"
+              type="datetime-local"
+              class="form-control"
+              name="executionDate"
+              formControlName="executionDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_bpmsApproveStatus"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.bpmsApproveStatus"
+            >Bpms Approve Status</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="bpmsApproveStatus"
+            id="field_bpmsApproveStatus"
+            data-cy="bpmsApproveStatus"
+            formControlName="bpmsApproveStatus"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.status">Status</label>
+          <select
+            class="form-control"
+            id="field_status"
+            data-cy="status"
+            name="status"
+            formControlName="status"
+            [compareWith]="compareRecordStatus"
+          >
+            <option [ngValue]="null"></option>
+            @for (recordStatusOption of recordStatusesSharedCollection; track $index) {
+              <option [ngValue]="recordStatusOption">{{ recordStatusOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_type" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.type">Type</label>
+          <select
+            class="form-control"
+            id="field_type"
+            data-cy="type"
+            name="type"
+            formControlName="type"
+            [compareWith]="compareHrLetterType"
+          >
+            <option [ngValue]="null"></option>
+            @for (hrLetterTypeOption of hrLetterTypesSharedCollection; track $index) {
+              <option [ngValue]="hrLetterTypeOption">{{ hrLetterTypeOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_personnelId" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.personnelId"
+            >Personnel Id</label
+          >
+          <select
+            class="form-control"
+            id="field_personnelId"
+            data-cy="personnelId"
+            name="personnelId"
+            formControlName="personnelId"
+            [compareWith]="comparePersonnel"
+          >
+            <option [ngValue]="null"></option>
+            @for (personnelOption of personnelSharedCollection; track $index) {
+              <option [ngValue]="personnelOption">{{ personnelOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_orgPosition" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.orgPosition"
+            >Org Position</label
+          >
+          <select
+            class="form-control"
+            id="field_orgPosition"
+            data-cy="orgPosition"
+            name="orgPosition"
+            formControlName="orgPosition"
+            [compareWith]="compareOrgPosition"
+          >
+            <option [ngValue]="null"></option>
+            @for (orgPositionOption of orgPositionsSharedCollection; track $index) {
+              <option [ngValue]="orgPositionOption">{{ orgPositionOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_orgUnit" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.orgUnit">Org Unit</label>
+          <select
+            class="form-control"
+            id="field_orgUnit"
+            data-cy="orgUnit"
+            name="orgUnit"
+            formControlName="orgUnit"
+            [compareWith]="compareOrgUnit"
+          >
+            <option [ngValue]="null"></option>
+            @for (orgUnitOption of orgUnitsSharedCollection; track $index) {
+              <option [ngValue]="orgUnitOption">{{ orgUnitOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_personnelStatus" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.personnelStatus"
+            >Personnel Status</label
+          >
+          <select
+            class="form-control"
+            id="field_personnelStatus"
+            data-cy="personnelStatus"
+            name="personnelStatus"
+            formControlName="personnelStatus"
+            [compareWith]="comparePersonnelStatus"
+          >
+            <option [ngValue]="null"></option>
+            @for (personnelStatusOption of personnelStatusesSharedCollection; track $index) {
+              <option [ngValue]="personnelStatusOption">{{ personnelStatusOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_hrLetterParameter"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.hrLetterParameter"
+            >Hr Letter Parameter</label
+          >
+          <select
+            class="form-control"
+            id="field_hrLetterParameter"
+            data-cy="hrLetterParameter"
+            name="hrLetterParameter"
+            formControlName="hrLetterParameter"
+            [compareWith]="compareHrLetterParameter"
+          >
+            <option [ngValue]="null"></option>
+            @for (hrLetterParameterOption of hrLetterParametersSharedCollection; track $index) {
+              <option [ngValue]="hrLetterParameterOption">{{ hrLetterParameterOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_internalUser" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.internalUser"
+            >Internal User</label
+          >
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (applicationUserOption of applicationUsersSharedCollection; track $index) {
+              <option [ngValue]="applicationUserOption">{{ applicationUserOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_company" jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetter.company">Company</label>
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            @for (companyOption of companiesSharedCollection; track $index) {
+              <option [ngValue]="companyOption">{{ companyOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">ذخیره</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

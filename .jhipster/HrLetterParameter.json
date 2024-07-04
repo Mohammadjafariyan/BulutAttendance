@@ -1,0 +1,104 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154302"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "پارامتر های کپی یا انتخاب شده\\nبه حکم پرسنل\\nقابل تغییر و فعال غیر فعال",
+  "fields": [
+    {
+      "documentation": "عنوان",
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "نحوه محاسبه دستی یا سیستمی",
+      "fieldName": "manualOrAuto",
+      "fieldType": "CalcType",
+      "fieldValues": "ByHand,BySystem,Constant",
+      "fieldValuesJavadocs": {
+        "Constant": "\n   *\n   * ثابت حکمی\n"
+      }
+    },
+    {
+      "documentation": "فرمول",
+      "fieldName": "formula",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "واحد روزانه یا ساعتی",
+      "fieldName": "unit",
+      "fieldType": "CalcUnit",
+      "fieldValues": "Daily,Hourly"
+    },
+    {
+      "documentation": "مشمول مالیات",
+      "fieldName": "isDeducTax",
+      "fieldType": "Boolean"
+    },
+    {
+      "documentation": "مشمول بیمه",
+      "fieldName": "isDeducInsurance",
+      "fieldType": "Boolean"
+    },
+    {
+      "documentation": "نوع سیستمی پارامتر\\nعوامل کارکرد",
+      "fieldName": "laborTime",
+      "fieldType": "LaborTime",
+      "fieldValues": "STANDARD (کارکرد موظف (استاندارد)),EFFECTIVE (کارکرد موثر),LACK_OF_WORK_AND_ABSENT (کسری کار و غیبت),OVERTIME (اضافه کاری),NOT_EFFECTIVE (کارکرد غیر موثر),SHIFT_10 (نوبت کاری 10 درصد),SHIFT_15 (نوبت کاری 15 درصد),SHIFT_22_5 (نوبت کاری 22.5 درصد),NIGHT_WORK (شب کاری),MISSION_WORK (ماموریت),HOLIDAY_WORK (تعطیل کاری),TOTAL_WORK_DAY (مدت اشتغال کل ( روز)),TOTAL_WORK_CURRENT_YEAR (کارکرد سال جاری ( روز )),REMAIN_LEAVE_HOURLY (باقی مانده مرخصی (ساعت)),REMAIN_LEAVE_DAILY (باقی مانده مرخصی (روز)),Other (سایر),SANAVAT (سنوات پایان خدمت),TOTAL_WORK (کل کارکرد)"
+    },
+    {
+      "documentation": "نوع سیستمی پارامتر\\nعوامل حکمی",
+      "fieldName": "hokm",
+      "fieldType": "Hokm",
+      "fieldValues": "Other (سایر),BASE (حقوق پایه),CHILD (حق اولاد),LABOR (بن کارگری),FOOD (بن خواربار),RANGE (مزد رتبه),ROLE (مزایای پست),EFFECTIVENESS (فوق العاده کارایی),HOUSE (حق مسکن),TOTAL_HOKM (جمع حکم)"
+    },
+    {
+      "documentation": "نوع سیستمی پارامتر\\nعوامل حقوق و مزایا",
+      "fieldName": "earnings",
+      "fieldType": "Earning",
+      "fieldValues": "Other (سایر),OverTime (اضافه کار),Shift (فوق العاده نوبت کاری),Night (فوق العاده شب کاری),Holiday_Work (فوق العاده تعطیل کاری),Mission (حق ماموریت),Tax_Insurance (سایر پرداختنی های مشمول بیمه و مالیات),OtherEarning_Tax (سایر پرداختنی های مشمول مالیات),OtherEarning_Insurance (سایر پرداختنی های مشمول بیمه),Total (جمع حقوق و مزایا),Total_Insurance (جمع حقوق و مزایای مشمول بیمه),Net_Salary_Paid (خالص پرداختی حقوق),Total_Tax (جمع حقوق و مزایای مشمول مالیات),LEAVE (بازخرید مرخصی ),YEARLY_BONUS (عیدی),YEARS_OF_SERVICE (سنوات خدمت),BONUS (پاداش)"
+    },
+    {
+      "documentation": "نوع سیستمی پارامتر\\nعوامل کسور",
+      "fieldName": "deduction",
+      "fieldType": "Deduction",
+      "fieldValues": "Other (سایر),Insurance_Labor (سهم بیمه کارگر 7 درصد),Tax (مالیات),Judicial (کسور قضایی),Prepaid (مساعده),Loan (اقساط وام),LastMonthOverPaid (اضافه پرداخت ماه قبل),Lack_of_work_and_absence (کسری کار و غیبت),Supplementary_insurance (بیمه تکمیلی),Total_Deduction (جمع کسور)"
+    },
+    {
+      "documentation": "نوع سیستمی پارامتر\\nعوامل دیگر",
+      "fieldName": "other",
+      "fieldType": "Deduction",
+      "fieldValues": "Other (سایر),Insurance_Labor (سهم بیمه کارگر 7 درصد),Tax (مالیات),Judicial (کسور قضایی),Prepaid (مساعده),Loan (اقساط وام),LastMonthOverPaid (اضافه پرداخت ماه قبل),Lack_of_work_and_absence (کسری کار و غیبت),Supplementary_insurance (بیمه تکمیلی),Total_Deduction (جمع کسور)"
+    },
+    {
+      "fieldName": "isEnabled",
+      "fieldType": "Boolean"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "HrLetterParameter",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

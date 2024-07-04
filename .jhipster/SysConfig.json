@@ -1,0 +1,52 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154312"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "برخی تنظیمات کلی سیستم بصورت سالانه\\nشامل فرمول محاسبه مالیات و بیمه",
+  "fields": [
+    {
+      "fieldName": "taxFormula",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sanavatFormula",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "SysConfig",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

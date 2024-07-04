@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (leaveSummary()) {
+      <div>
+        <h2 data-cy="leaveSummaryDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceLeaveSummary.detail.title">Leave Summary</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceLeaveSummary.remainHours">Remain Hours</span></dt>
+          <dd>
+            <span>{{ leaveSummary()!.remainHours }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceLeaveSummary.remainDays">Remain Days</span></dt>
+          <dd>
+            <span>{{ leaveSummary()!.remainDays }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceLeaveSummary.year">Year</span></dt>
+          <dd>
+            <span>{{ leaveSummary()!.year }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceLeaveSummary.id">Id</span></dt>
+          <dd>
+            <span>{{ leaveSummary()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceLeaveSummary.status">Status</span></dt>
+          <dd>
+            @if (leaveSummary()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', leaveSummary()!.status?.id, 'view']">{{
+                  leaveSummary()!.status?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceLeaveSummary.internalUser">Internal User</span></dt>
+          <dd>
+            @if (leaveSummary()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', leaveSummary()!.internalUser?.id, 'view']">{{
+                  leaveSummary()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceLeaveSummary.company">Company</span></dt>
+          <dd>
+            @if (leaveSummary()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', leaveSummary()!.company?.id, 'view']">{{ leaveSummary()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/leave-summary', leaveSummary()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

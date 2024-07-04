@@ -1,0 +1,34 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceTransactionAccount": {
+      "home": {
+        "title": "Transaction Accounts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Transaction Account",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Transaction Account",
+        "search": "Գտնել Transaction Account",
+        "notFound": "No Transaction Accounts found"
+      },
+      "created": "Նոր Transaction Account ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Transaction Account թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Transaction Account հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Transaction Account {{ id }}?"
+      },
+      "detail": {
+        "title": "Transaction Account"
+      },
+      "id": "ID",
+      "debitAmount": "Debit Amount",
+      "creditAmount": "Credit Amount",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "account": "Account",
+      "transaction": "Transaction",
+      "help": {
+        "debitAmount": "مبلغ بدهکار",
+        "creditAmount": "مبلغ بستانکار"
+      }
+    }
+  }
+}

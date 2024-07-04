@@ -1,0 +1,30 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceLeaveSummary": {
+      "home": {
+        "title": "Leave Summaries",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Leave Summary",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Leave Summary",
+        "search": "Գտնել Leave Summary",
+        "notFound": "No Leave Summaries found"
+      },
+      "created": "Նոր Leave Summary ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Leave Summary թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Leave Summary հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Leave Summary {{ id }}?"
+      },
+      "detail": {
+        "title": "Leave Summary"
+      },
+      "remainHours": "Remain Hours",
+      "remainDays": "Remain Days",
+      "year": "Year",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

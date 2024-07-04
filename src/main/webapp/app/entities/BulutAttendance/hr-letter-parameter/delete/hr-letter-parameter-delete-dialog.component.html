@@ -1,0 +1,28 @@
+@if (hrLetterParameter) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(hrLetterParameter.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="hrLetterParameterDeleteDialogHeading" jhiTranslate="entity.delete.title">تصدیق عملیات حذف</h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        id="jhi-delete-hrLetterParameter-heading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceHrLetterParameter.delete.question"
+        [translateValues]="{ id: hrLetterParameter.id }"
+      >
+        Are you sure you want to delete Hr Letter Parameter {{ hrLetterParameter.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+      </button>
+
+      <button id="jhi-confirm-delete-hrLetterParameter" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">حذف</span>
+      </button>
+    </div>
+  </form>
+}

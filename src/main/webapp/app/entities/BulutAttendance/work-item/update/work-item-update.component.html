@@ -1,0 +1,113 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-work-item-heading"
+        data-cy="WorkItemCreateUpdateHeading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.home.createOrEditLabel"
+      >
+        Create or edit a Work Item
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_amount" jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.amount">Amount</label>
+          <input type="number" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_hrLetterParameter"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.hrLetterParameter"
+            >Hr Letter Parameter</label
+          >
+          <select
+            class="form-control"
+            id="field_hrLetterParameter"
+            data-cy="hrLetterParameter"
+            name="hrLetterParameter"
+            formControlName="hrLetterParameter"
+            [compareWith]="compareHrLetterParameter"
+          >
+            <option [ngValue]="null"></option>
+            @for (hrLetterParameterOption of hrLetterParametersCollection; track $index) {
+              <option [ngValue]="hrLetterParameterOption">{{ hrLetterParameterOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_internalUser" jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.internalUser"
+            >Internal User</label
+          >
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (applicationUserOption of applicationUsersSharedCollection; track $index) {
+              <option [ngValue]="applicationUserOption">{{ applicationUserOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_company" jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.company">Company</label>
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            @for (companyOption of companiesSharedCollection; track $index) {
+              <option [ngValue]="companyOption">{{ companyOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_work" jhiTranslate="bulutAttendanceApp.bulutAttendanceWorkItem.work">Work</label>
+          <select class="form-control" id="field_work" data-cy="work" name="work" formControlName="work" [compareWith]="compareWork">
+            <option [ngValue]="null"></option>
+            @for (workOption of worksSharedCollection; track $index) {
+              <option [ngValue]="workOption">{{ workOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">ذخیره</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

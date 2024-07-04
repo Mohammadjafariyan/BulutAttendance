@@ -1,0 +1,32 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccountingProcedure": {
+      "home": {
+        "title": "Accounting Procedures",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Accounting Procedure",
+        "createOrEditLabel": "Create or edit a Accounting Procedure",
+        "search": "Search for Accounting Procedure",
+        "notFound": "No Accounting Procedures found"
+      },
+      "created": "A new Accounting Procedure is created with identifier {{ param }}",
+      "updated": "A Accounting Procedure is updated with identifier {{ param }}",
+      "deleted": "A Accounting Procedure is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Accounting Procedure {{ id }}?"
+      },
+      "detail": {
+        "title": "Accounting Procedure"
+      },
+      "id": "ID",
+      "title": "Title",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "executeAfter": "Execute After",
+      "help": {
+        "title": "عنوان"
+      }
+    }
+  }
+}

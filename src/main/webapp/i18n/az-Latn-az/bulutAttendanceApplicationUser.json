@@ -1,0 +1,25 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceApplicationUser": {
+      "home": {
+        "title": "Application Users",
+        "refreshListLabel": "Siyahını yenilə",
+        "createLabel": "Yeni Application User əlavə et",
+        "createOrEditLabel": "Yeni Application User əlavə et və ya yenilə",
+        "search": "Application User axtar",
+        "notFound": "Application Users məlumatı tapılmadı"
+      },
+      "created": "{{ param }} ID ilə bir Application User əlavə edildi",
+      "updated": "{{ param }} nolu Application User dəyişildi",
+      "deleted": "{{ param }} nolu Application User silindi",
+      "delete": {
+        "question": "{{ id }} nolu Application User silinəcək. Davam etmək istəyirsiniz?"
+      },
+      "detail": {
+        "title": "Application User"
+      },
+      "id": "ID",
+      "userId": "User Id"
+    }
+  }
+}

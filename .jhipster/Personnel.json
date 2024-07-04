@@ -1,0 +1,86 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154309"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "requitmentDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "father",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "shenasname",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mahalesodur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "birthday",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isSingle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastEducation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "educationField",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "children",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "42",
+      "fieldValidateRulesMin": "42"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "Personnel",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

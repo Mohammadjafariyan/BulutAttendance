@@ -1,0 +1,31 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154311"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "fromDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "toDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "RecordStatus",
+  "relationships": [],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

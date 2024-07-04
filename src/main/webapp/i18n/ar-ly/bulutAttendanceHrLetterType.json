@@ -1,0 +1,28 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceHrLetterType": {
+      "home": {
+        "title": "Hr Letter Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Hr Letter Type",
+        "createOrEditLabel": "Create or edit a Hr Letter Type",
+        "search": "Search for Hr Letter Type",
+        "notFound": "No Hr Letter Types found"
+      },
+      "created": "A new Hr Letter Type is created with identifier {{ param }}",
+      "updated": "A Hr Letter Type is updated with identifier {{ param }}",
+      "deleted": "A Hr Letter Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Hr Letter Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Hr Letter Type"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

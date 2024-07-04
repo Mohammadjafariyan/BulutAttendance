@@ -1,0 +1,257 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (parameter()) {
+      <div>
+        <h2 data-cy="parameterDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.detail.title">Parameter</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">شناسه</span></dt>
+          <dd>
+            <span>{{ parameter()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.title' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.title"
+              >Title</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parameter()!.title }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.manualOrAuto' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.manualOrAuto"
+              >Manual Or Auto</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.CalcType.' + (parameter()!.manualOrAuto ?? 'null')">{{
+              { null: '', ByHand: 'ByHand', BySystem: 'BySystem', Constant: 'Constant' }[parameter()!.manualOrAuto ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.formula' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.formula"
+              >Formula</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parameter()!.formula }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.unit' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.unit"
+              >Unit</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.CalcUnit.' + (parameter()!.unit ?? 'null')">{{
+              { null: '', Daily: 'Daily', Hourly: 'Hourly' }[parameter()!.unit ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.isDeducTax' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.isDeducTax"
+              >Is Deduc Tax</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parameter()!.isDeducTax }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.isDeducInsurance' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.isDeducInsurance"
+              >Is Deduc Insurance</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parameter()!.isDeducInsurance }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.laborTime' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.laborTime"
+              >Labor Time</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.LaborTime.' + (parameter()!.laborTime ?? 'null')">{{
+              {
+                null: '',
+                STANDARD: 'کارکرد موظف (استاندارد',
+                EFFECTIVE: 'کارکرد موثر',
+                LACK_OF_WORK_AND_ABSENT: 'کسری کار و غیبت',
+                OVERTIME: 'اضافه کاری',
+                NOT_EFFECTIVE: 'کارکرد غیر موثر',
+                SHIFT_10: 'نوبت کاری 10 درصد',
+                SHIFT_15: 'نوبت کاری 15 درصد',
+                SHIFT_22_5: 'نوبت کاری 22.5 درصد',
+                NIGHT_WORK: 'شب کاری',
+                MISSION_WORK: 'ماموریت',
+                HOLIDAY_WORK: 'تعطیل کاری',
+                TOTAL_WORK_DAY: 'مدت اشتغال کل ( روز',
+                TOTAL_WORK_CURRENT_YEAR: 'کارکرد سال جاری ( روز ',
+                REMAIN_LEAVE_HOURLY: 'باقی مانده مرخصی (ساعت',
+                REMAIN_LEAVE_DAILY: 'باقی مانده مرخصی (روز',
+                Other: 'سایر',
+                SANAVAT: 'سنوات پایان خدمت',
+                TOTAL_WORK: 'کل کارکرد'
+              }[parameter()!.laborTime ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.hokm' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.hokm"
+              >Hokm</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.Hokm.' + (parameter()!.hokm ?? 'null')">{{
+              {
+                null: '',
+                Other: 'سایر',
+                BASE: 'حقوق پایه',
+                CHILD: 'حق اولاد',
+                LABOR: 'بن کارگری',
+                FOOD: 'بن خواربار',
+                RANGE: 'مزد رتبه',
+                ROLE: 'مزایای پست',
+                EFFECTIVENESS: 'فوق العاده کارایی',
+                HOUSE: 'حق مسکن',
+                TOTAL_HOKM: 'جمع حکم'
+              }[parameter()!.hokm ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.earnings' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.earnings"
+              >Earnings</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.Earning.' + (parameter()!.earnings ?? 'null')">{{
+              {
+                null: '',
+                Other: 'سایر',
+                OverTime: 'اضافه کار',
+                Shift: 'فوق العاده نوبت کاری',
+                Night: 'فوق العاده شب کاری',
+                Holiday_Work: 'فوق العاده تعطیل کاری',
+                Mission: 'حق ماموریت',
+                Tax_Insurance: 'سایر پرداختنی های مشمول بیمه و مالیات',
+                OtherEarning_Tax: 'سایر پرداختنی های مشمول مالیات',
+                OtherEarning_Insurance: 'سایر پرداختنی های مشمول بیمه',
+                Total: 'جمع حقوق و مزایا',
+                Total_Insurance: 'جمع حقوق و مزایای مشمول بیمه',
+                Net_Salary_Paid: 'خالص پرداختی حقوق',
+                Total_Tax: 'جمع حقوق و مزایای مشمول مالیات',
+                LEAVE: 'بازخرید مرخصی ',
+                YEARLY_BONUS: 'عیدی',
+                YEARS_OF_SERVICE: 'سنوات خدمت',
+                BONUS: 'پاداش'
+              }[parameter()!.earnings ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.deduction' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.deduction"
+              >Deduction</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.Deduction.' + (parameter()!.deduction ?? 'null')">{{
+              {
+                null: '',
+                Other: 'سایر',
+                Insurance_Labor: 'سهم بیمه کارگر 7 درصد',
+                Tax: 'مالیات',
+                Judicial: 'کسور قضایی',
+                Prepaid: 'مساعده',
+                Loan: 'اقساط وام',
+                LastMonthOverPaid: 'اضافه پرداخت ماه قبل',
+                Lack_of_work_and_absence: 'کسری کار و غیبت',
+                Supplementary_insurance: 'بیمه تکمیلی',
+                Total_Deduction: 'جمع کسور'
+              }[parameter()!.deduction ?? 'null']
+            }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceParameter.help.other' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.other"
+              >Other</span
+            >
+          </dt>
+          <dd>
+            <span [jhiTranslate]="'bulutAttendanceApp.Deduction.' + (parameter()!.other ?? 'null')">{{
+              {
+                null: '',
+                Other: 'سایر',
+                Insurance_Labor: 'سهم بیمه کارگر 7 درصد',
+                Tax: 'مالیات',
+                Judicial: 'کسور قضایی',
+                Prepaid: 'مساعده',
+                Loan: 'اقساط وام',
+                LastMonthOverPaid: 'اضافه پرداخت ماه قبل',
+                Lack_of_work_and_absence: 'کسری کار و غیبت',
+                Supplementary_insurance: 'بیمه تکمیلی',
+                Total_Deduction: 'جمع کسور'
+              }[parameter()!.other ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.status">Status</span></dt>
+          <dd>
+            @if (parameter()!.status) {
+              <div>
+                <a [routerLink]="['/bulutattendance/record-status', parameter()!.status?.id, 'view']">{{ parameter()!.status?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.internalUser">Internal User</span></dt>
+          <dd>
+            @if (parameter()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', parameter()!.internalUser?.id, 'view']">{{
+                  parameter()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceParameter.company">Company</span></dt>
+          <dd>
+            @if (parameter()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', parameter()!.company?.id, 'view']">{{ parameter()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/parameter', parameter()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

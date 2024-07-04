@@ -1,0 +1,28 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceHrLetterType": {
+      "home": {
+        "title": "Hr Letter Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Hr Letter Type",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Hr Letter Type",
+        "search": "Գտնել Hr Letter Type",
+        "notFound": "No Hr Letter Types found"
+      },
+      "created": "Նոր Hr Letter Type ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Hr Letter Type թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Hr Letter Type հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Hr Letter Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Hr Letter Type"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceAccountingProcedureExecution": {
+      "home": {
+        "title": "Accounting Procedure Executions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Accounting Procedure Execution",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Accounting Procedure Execution",
+        "search": "Գտնել Accounting Procedure Execution",
+        "notFound": "No Accounting Procedure Executions found"
+      },
+      "created": "Նոր Accounting Procedure Execution ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Accounting Procedure Execution թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Accounting Procedure Execution հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Accounting Procedure Execution {{ id }}?"
+      },
+      "detail": {
+        "title": "Accounting Procedure Execution"
+      },
+      "id": "ID",
+      "dateTime": "Date Time",
+      "desc": "Desc",
+      "internalUser": "Internal User",
+      "company": "Company",
+      "procedure": "Procedure",
+      "help": {
+        "dateTime": "تاریخ اجرا\n",
+        "desc": "توضیحات\n"
+      }
+    }
+  }
+}

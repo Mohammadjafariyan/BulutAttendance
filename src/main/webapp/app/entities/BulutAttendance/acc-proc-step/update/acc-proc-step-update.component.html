@@ -1,0 +1,152 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-acc-proc-step-heading"
+        data-cy="AccProcStepCreateUpdateHeading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.home.createOrEditLabel"
+      >
+        Create or edit a Acc Proc Step
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_internalUser" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.internalUser"
+            >Internal User</label
+          >
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (applicationUserOption of applicationUsersSharedCollection; track $index) {
+              <option [ngValue]="applicationUserOption">{{ applicationUserOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_company" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.company">Company</label>
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            @for (companyOption of companiesSharedCollection; track $index) {
+              <option [ngValue]="companyOption">{{ companyOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_creditAccount" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.creditAccount"
+            >Credit Account</label
+          >
+          <select
+            class="form-control"
+            id="field_creditAccount"
+            data-cy="creditAccount"
+            name="creditAccount"
+            formControlName="creditAccount"
+            [compareWith]="compareAccountHesab"
+          >
+            <option [ngValue]="null"></option>
+            @for (accountHesabOption of accountHesabsSharedCollection; track $index) {
+              <option [ngValue]="accountHesabOption">{{ accountHesabOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_debitAccount" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.debitAccount"
+            >Debit Account</label
+          >
+          <select
+            class="form-control"
+            id="field_debitAccount"
+            data-cy="debitAccount"
+            name="debitAccount"
+            formControlName="debitAccount"
+            [compareWith]="compareAccountHesab"
+          >
+            <option [ngValue]="null"></option>
+            @for (accountHesabOption of accountHesabsSharedCollection; track $index) {
+              <option [ngValue]="accountHesabOption">{{ accountHesabOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_parameter" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.parameter"
+            >Parameter</label
+          >
+          <select
+            class="form-control"
+            id="field_parameter"
+            data-cy="parameter"
+            name="parameter"
+            formControlName="parameter"
+            [compareWith]="compareAccProccParameter"
+          >
+            <option [ngValue]="null"></option>
+            @for (accProccParameterOption of accProccParametersSharedCollection; track $index) {
+              <option [ngValue]="accProccParameterOption">{{ accProccParameterOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_procedure" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccProcStep.procedure"
+            >Procedure</label
+          >
+          <select
+            class="form-control"
+            id="field_procedure"
+            data-cy="procedure"
+            name="procedure"
+            formControlName="procedure"
+            [compareWith]="compareAccountingProcedure"
+          >
+            <option [ngValue]="null"></option>
+            @for (accountingProcedureOption of accountingProceduresSharedCollection; track $index) {
+              <option [ngValue]="accountingProcedureOption">{{ accountingProcedureOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">ذخیره</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

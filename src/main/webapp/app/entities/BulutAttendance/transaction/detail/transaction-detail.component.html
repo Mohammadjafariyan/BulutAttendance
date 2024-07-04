@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (transaction()) {
+      <div>
+        <h2 data-cy="transactionDetailsHeading">
+          <span jhiTranslate="bulutAttendanceApp.bulutAttendanceTransaction.detail.title">Transaction</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">شناسه</span></dt>
+          <dd>
+            <span>{{ transaction()!.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceTransaction.help.issueDateTime' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceTransaction.issueDateTime"
+              >Issue Date Time</span
+            >
+          </dt>
+          <dd>
+            <span>{{ transaction()!.issueDateTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceTransaction.help.totalAmount' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceTransaction.totalAmount"
+              >Total Amount</span
+            >
+          </dt>
+          <dd>
+            <span>{{ transaction()!.totalAmount }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceTransaction.help.desc' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceTransaction.desc"
+              >Desc</span
+            >
+          </dt>
+          <dd>
+            <span>{{ transaction()!.desc }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceTransaction.help.docNumber' | translate"
+              jhiTranslate="bulutAttendanceApp.bulutAttendanceTransaction.docNumber"
+              >Doc Number</span
+            >
+          </dt>
+          <dd>
+            <span>{{ transaction()!.docNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTransaction.internalUser">Internal User</span></dt>
+          <dd>
+            @if (transaction()!.internalUser) {
+              <div>
+                <a [routerLink]="['/bulutattendance/application-user', transaction()!.internalUser?.id, 'view']">{{
+                  transaction()!.internalUser?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bulutAttendanceApp.bulutAttendanceTransaction.company">Company</span></dt>
+          <dd>
+            @if (transaction()!.company) {
+              <div>
+                <a [routerLink]="['/bulutattendance/company', transaction()!.company?.id, 'view']">{{ transaction()!.company?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">برگشت</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bulutattendance/transaction', transaction()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">ویرایش</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

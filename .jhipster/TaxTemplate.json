@@ -1,0 +1,56 @@
+{
+  "annotations": {
+    "changelogDate": "20240610154313"
+  },
+  "applications": "*",
+  "clientRootFolder": "BulutAttendance",
+  "databaseType": "sql",
+  "documentation": "تنظیمات هر ساله مالیات که\\nهر ساله توسط دولت مشخص می شود",
+  "fields": [
+    {
+      "fieldName": "rangeFrom",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "rangeTo",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "percent",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    }
+  ],
+  "microserviceName": "BulutAttendance",
+  "name": "TaxTemplate",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "recordStatus",
+      "relationshipName": "status",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "relationshipName": "company",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

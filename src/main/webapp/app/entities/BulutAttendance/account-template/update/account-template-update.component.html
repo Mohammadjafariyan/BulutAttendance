@@ -1,0 +1,240 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-account-template-heading"
+        data-cy="AccountTemplateCreateUpdateHeading"
+        jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.home.createOrEditLabel"
+      >
+        Create or edit a Account Template
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_title"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.title' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.title"
+            >Title</label
+          >
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_code"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.code' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.code"
+            >Code</label
+          >
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_level"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.level' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.level"
+            >Level</label
+          >
+          <input type="number" class="form-control" name="level" id="field_level" data-cy="level" formControlName="level" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_levelTitle"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.levelTitle' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.levelTitle"
+            >Level Title</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="levelTitle"
+            id="field_levelTitle"
+            data-cy="levelTitle"
+            formControlName="levelTitle"
+          />
+        </div>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_type"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.type' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.type"
+            >Type</label
+          >
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'bulutAttendanceApp.AccountType.null' | translate }}</option>
+            @for (accountType of accountTypeValues; track $index) {
+              <option [value]="accountType">{{ 'bulutAttendanceApp.AccountType.' + accountType | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_levelInTree"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.levelInTree' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.levelInTree"
+            >Level In Tree</label
+          >
+          <select class="form-control" name="levelInTree" formControlName="levelInTree" id="field_levelInTree" data-cy="levelInTree">
+            <option [ngValue]="null">{{ 'bulutAttendanceApp.AccountLevelInTree.null' | translate }}</option>
+            @for (accountLevelInTree of accountLevelInTreeValues; track $index) {
+              <option [value]="accountLevelInTree">{{ 'bulutAttendanceApp.AccountLevelInTree.' + accountLevelInTree | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_debitAmount"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.debitAmount' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.debitAmount"
+            >Debit Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="debitAmount"
+            id="field_debitAmount"
+            data-cy="debitAmount"
+            formControlName="debitAmount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_creditAmount"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.creditAmount' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.creditAmount"
+            >Credit Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="creditAmount"
+            id="field_creditAmount"
+            data-cy="creditAmount"
+            formControlName="creditAmount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_typeInFormula"
+            [ngbTooltip]="'bulutAttendanceApp.bulutAttendanceAccountTemplate.help.typeInFormula' | translate"
+            jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.typeInFormula"
+            >Type In Formula</label
+          >
+          <select
+            class="form-control"
+            name="typeInFormula"
+            formControlName="typeInFormula"
+            id="field_typeInFormula"
+            data-cy="typeInFormula"
+          >
+            <option [ngValue]="null">{{ 'bulutAttendanceApp.AccountingFormulaType.null' | translate }}</option>
+            @for (accountingFormulaType of accountingFormulaTypeValues; track $index) {
+              <option [value]="accountingFormulaType">
+                {{ 'bulutAttendanceApp.AccountingFormulaType.' + accountingFormulaType | translate }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.status"
+            >Status</label
+          >
+          <select
+            class="form-control"
+            id="field_status"
+            data-cy="status"
+            name="status"
+            formControlName="status"
+            [compareWith]="compareRecordStatus"
+          >
+            <option [ngValue]="null"></option>
+            @for (recordStatusOption of recordStatusesSharedCollection; track $index) {
+              <option [ngValue]="recordStatusOption">{{ recordStatusOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_internalUser" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.internalUser"
+            >Internal User</label
+          >
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (applicationUserOption of applicationUsersSharedCollection; track $index) {
+              <option [ngValue]="applicationUserOption">{{ applicationUserOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_company" jhiTranslate="bulutAttendanceApp.bulutAttendanceAccountTemplate.company"
+            >Company</label
+          >
+          <select
+            class="form-control"
+            id="field_company"
+            data-cy="company"
+            name="company"
+            formControlName="company"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            @for (companyOption of companiesSharedCollection; track $index) {
+              <option [ngValue]="companyOption">{{ companyOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">انصراف</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">ذخیره</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

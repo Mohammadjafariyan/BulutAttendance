@@ -1,0 +1,31 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceTaxTemplate": {
+      "home": {
+        "title": "Tax Templates",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Tax Template",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Tax Template",
+        "search": "Գտնել Tax Template",
+        "notFound": "No Tax Templates found"
+      },
+      "created": "Նոր Tax Template ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Tax Template թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Tax Template հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Tax Template {{ id }}?"
+      },
+      "detail": {
+        "title": "Tax Template"
+      },
+      "rangeFrom": "Range From",
+      "rangeTo": "Range To",
+      "percent": "Percent",
+      "year": "Year",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

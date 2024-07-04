@@ -1,0 +1,30 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceLeaveSummary": {
+      "home": {
+        "title": "Leave Summaries",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Leave Summary",
+        "createOrEditLabel": "Create or edit a Leave Summary",
+        "search": "Search for Leave Summary",
+        "notFound": "No Leave Summaries found"
+      },
+      "created": "A new Leave Summary is created with identifier {{ param }}",
+      "updated": "A Leave Summary is updated with identifier {{ param }}",
+      "deleted": "A Leave Summary is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Leave Summary {{ id }}?"
+      },
+      "detail": {
+        "title": "Leave Summary"
+      },
+      "remainHours": "Remain Hours",
+      "remainDays": "Remain Days",
+      "year": "Year",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}

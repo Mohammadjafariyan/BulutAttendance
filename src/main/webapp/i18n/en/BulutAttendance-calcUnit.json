@@ -1,0 +1,9 @@
+{
+  "bulutAttendanceApp": {
+    "CalcUnit": {
+      "null": "",
+      "Daily": "Daily",
+      "Hourly": "Hourly"
+    }
+  }
+}

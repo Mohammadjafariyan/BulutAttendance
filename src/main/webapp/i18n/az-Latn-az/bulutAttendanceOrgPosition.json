@@ -1,0 +1,28 @@
+{
+  "bulutAttendanceApp": {
+    "bulutAttendanceOrgPosition": {
+      "home": {
+        "title": "Org Positions",
+        "refreshListLabel": "Siyahını yenilə",
+        "createLabel": "Yeni Org Position əlavə et",
+        "createOrEditLabel": "Yeni Org Position əlavə et və ya yenilə",
+        "search": "Org Position axtar",
+        "notFound": "Org Positions məlumatı tapılmadı"
+      },
+      "created": "{{ param }} ID ilə bir Org Position əlavə edildi",
+      "updated": "{{ param }} nolu Org Position dəyişildi",
+      "deleted": "{{ param }} nolu Org Position silindi",
+      "delete": {
+        "question": "{{ id }} nolu Org Position silinəcək. Davam etmək istəyirsiniz?"
+      },
+      "detail": {
+        "title": "Org Position"
+      },
+      "title": "Title",
+      "id": "Id",
+      "status": "Status",
+      "internalUser": "Internal User",
+      "company": "Company"
+    }
+  }
+}
